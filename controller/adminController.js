@@ -398,7 +398,7 @@ const banner = (req, res) => {
 const addBanner = (req, res) => {
   try {
     adminHelpers.productForm().then((category) => {
-      res.render("admin/addbanner", { category, layout: "admin-layout" });
+      res.render("admin/add-banner", { category, layout: "admin-layout" });
     });
   } catch (error) {
     console.log(error);
