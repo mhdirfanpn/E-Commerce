@@ -533,7 +533,7 @@ const profileOrders = async (req, res) => {
   try {
     let docCount;
     const perPage = 5;
-    const pageNum = req.query.page;
+    const pageNum = req?.query?.page;
     let orders = await userHelpers.getUserOrders(
       req.session.user,
       pageNum,
