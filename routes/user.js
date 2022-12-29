@@ -10,7 +10,7 @@ const swal = require("sweetalert");
 const verifyLogin = async(req, res, next) => {
   let user=req.session.user
   userHelpers.findUser(user).then((userData)=>{
-    if (user && !userData.isBlocked) {
+    if (user && !userData?.isBlocked) {
       next();
     } else {
 
@@ -24,7 +24,7 @@ const verifyLogin = async(req, res, next) => {
 
 router.get("/", userController.landingPage);
 
-//login $ logout
+//login
 
 router.get("/signup", userController.signupPage);
 
