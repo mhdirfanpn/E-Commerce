@@ -271,7 +271,6 @@ const userOrders = (pageNum, docCount, perPage) => {
           .limit(perPage);
       })
       .then((orders) => {
-        orders.docCount = docCount;
         resolve(orders);
       })
       .catch((err) => {

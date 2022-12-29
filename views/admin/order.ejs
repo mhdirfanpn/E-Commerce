@@ -85,13 +85,6 @@
                 <li class="page-item"><a class="page-link" href="#">16</a></li>
                 <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li> -->
 
-                <% for(let i=1;i<=pages;i++) { %> 
-                    <% if(i==currentPage) {%> 
-                      <li class="page-item active"><a class="page-link" href="/admin/order-list?page=<%=i %>"><%=i %> </a></li>
-                      <% } else { %> 
-                        <li class="page-item"><a class="page-link" href="/admin/order-list?page=<%=i %>"><%=i %> </a></li>
-                        <% } %>   
-                    <% } %> 
             </ul>
         </nav>
     </div>
