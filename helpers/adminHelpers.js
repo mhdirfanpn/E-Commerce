@@ -260,22 +260,13 @@ const userOrders = (pageNum,perPage) => {
     await db.order
       .find()
       .sort({ $natural: -1 })
-      .countDocuments()
-      .then((documents) => {
-        docCount = documents;
-        return db.order
-          .find()
-          .sort({ $natural: -1 })
-          .skip((pageNum - 1) * perPage)
-          .limit(perPage);
-      })
       .then((orders) => {
         resolve(orders);
       })
       .catch((err) => {
         reject(err);
       });
-  });
+      })
 };
 
 const getOrderProducts = (orderId) => {
