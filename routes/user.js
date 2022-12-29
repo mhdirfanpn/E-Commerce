@@ -10,7 +10,7 @@ const swal = require("sweetalert");
 const verifyLogin = async(req, res, next) => {
   let user=req.session.user
   userHelpers.findUser(user).then((userData)=>{
-    if (user && !userData?.isBlocked) {
+    if (user) {
       next();
     } else {
 
