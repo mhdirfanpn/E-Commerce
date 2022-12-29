@@ -22,6 +22,7 @@ const userList = () => {
 
     await db.users
       .find()
+      .sort({ $natural: -1 })
       .then((response) => {
         console.log(response);
         resolve(response);
@@ -32,12 +33,13 @@ const userList = () => {
     })
 };
 
-const productList = (pageNum, docCount, perPage) => {
+const productList = (pageNum,perPage) => {
   return new Promise(async (resolve, reject) => {
     let docCount;
 
     await db.product
       .find()
+      .sort({ $natural: -1 })
       .countDocuments()
       .then((documents) => {
         docCount = documents;
