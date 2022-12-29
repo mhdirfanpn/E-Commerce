@@ -1,0 +1,183 @@
+<section class="content-main">
+    <div class="row">
+      <div class="col-9">
+        <div class="content-header">
+          <h2 class="content-title">Add New Product</h2>
+        </div>
+      </div>
+      <form
+        action="/admin/edit-product/<%=product._id %> "
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="col-lg-10">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h4>Basic</h4>
+            </div>
+            <div class="card-body">
+              <div class="mb-4">
+                <label for="product_name" class="form-label">Product title</label>
+                <input
+                  required
+                  name="name"
+                  type="text"
+                  placeholder="Type here"
+                  class="form-control"
+                  id="product_name"
+                  value="<%=product.name %> "
+                />
+              </div>
+              <div class="mb-4">
+                <label class="form-label">Description</label>
+                <input
+                  required
+                  name="description"
+                  placeholder="Type here"
+                  class="form-control"
+                  rows="8"
+                  value="<%=product.description %>"
+                  />
+                </textarea>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-4">
+                    <label class="form-label"> Price</label>
+                    <div class="row gx-2">
+                      <input
+                        required
+                        name="price"
+                        placeholder="₹"
+                        type="number"
+                        class="form-control"
+                        value="<%=product.price %>"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-4">
+                    <label class="form-label"> Stock</label>
+                    <div class="row gx-2">
+                      <input
+                        required
+                        name="stock"
+                        placeholder="Stock"
+                        type="number"
+                        class="form-control"
+                        value="<%=product.stock %>"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- card end// -->
+        </div>
+        <div class="col-lg-10">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h4>Media</h4>
+            </div>
+            <div class="card-body">
+              <div class="input-upload">
+                <img  src="/productImages/<%=product?._id %>0.jpg" style="width: 100px;height:auto" id="imageView">
+                <input
+                  name="Image1"
+                  multiple
+                  class="form-control"
+                  type="file"
+                  onchange="viewImage(event)"
+                />
+              </div>
+              <div class="input-upload">
+                <img  src="/productImages/<%=product?._id %>1.jpg" style="width: 100px;height:auto" id="imgView1">
+                <input
+                  name="Image2"
+                  multiple
+                  class="form-control"
+                  type="file"
+                  onchange="viewImage1(event)"
+                />
+              </div>
+              <div class="input-upload">
+                <img  src="/productImages/<%=product?._id %>2.jpg" style="width: 100px;height:auto" id="imgView2">
+                <input
+                  name="Image3"
+                  multiple
+                  class="form-control"
+                  type="file"
+                  onchange="viewImage2(event)"
+                />
+              </div>
+              <div class="input-upload">
+                <img  src="/productImages/<%=product?._id %>3.jpg" style="width: 100px;height:auto" id="imgView3">
+                <input
+                  name="Image4"
+                  multiple
+                  class="form-control"
+                  type="file"
+                  onchange="viewImage3(event)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-10">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h4>Categories</h4>
+            </div>
+            <div class="card-body">
+              <div class="row gx-2">
+                <div class="mb-4">
+                  <label class="form-label">Categories</label>
+                  <select class="form-select" name="category" value="<%=product.category%> ">
+          
+                    <% categories.forEach(element=>{ %>
+                    <option><%= element.name %></option>
+                     <% }) %>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-10">
+          <div class="card mb-4">
+            <div class="card-body">
+              <button type="submit" class="btn btn-md rounded font-sm hover-up">
+                Publish
+              </button>
+              <!-- <a href="/admin/products" class="btn btn-light rounded font-md ms-1"
+                >Cancel</a
+              > -->
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  
+  <script>
+    function viewImage(event){
+        document.getElementById('imageView').src=URL.createObjectURL(event.target.files[0])
+    }
+
+    function viewImage1(event) {
+        document.getElementById('imgView1').src = URL.createObjectURL(event.target.files[0])
+    }
+    function viewImage2(event) {
+        document.getElementById('imgView2').src = URL.createObjectURL(event.target.files[0])
+    }
+    function viewImage3(event) {
+        document.getElementById('imgView3').src = URL.createObjectURL(event.target.files[0])
+    }
+  
+</script>
+
+<script defer src="https://cdn.crop.guide/loader/l.js?c=JYHZXT"></script>

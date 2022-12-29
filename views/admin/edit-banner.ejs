@@ -1,0 +1,67 @@
+<section>
+    <section class="content-main">
+        <div class="row">
+            <div class="col-9">
+                <div class="content-header">
+                    <h2 class="content-title">Add New Banner</h2>
+                    
+                </div>
+            </div>
+            <form action="/admin/edit-banner/<%=bannerDetails._id %>" method="post" enctype="multipart/form-data">
+                <div>
+
+                    <button type="submit" class="btn btn-md rounded font-sm hover-up">Publish</button>
+                </div>
+                <div class="col-lg-6 ">
+                    <div class="card mb-4 mt-5">
+
+                        <div class="card-body">
+                              <div class="card-body">
+                                <div class="row gx-2">
+                                  <div class="mb-4">
+                                    <label class="form-label">Categories</label>
+                                    <select class="form-select" name="name">
+                                      <option>Categories</option>
+                    
+                                      <% category.forEach(category=>{ %>
+                                      <option><%= category.name %></option>
+                                      > <% }) %>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Banner description</label>
+                                    <input placeholder="Type here" name="description" class="form-control" value="<%=bannerDetails.description %>"  
+                                        rows="4"></input>
+                                </div>
+
+                        
+                        </div>
+                    </div> <!-- card end// -->
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Media</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-upload">
+                                <img src="/addBanner/<%=bannerDetails._id %>.jpg" id="imageView" alt="">
+                                <input class="form-control" name="Image" type="file" onchange="viewImage(event)">
+                            </div>
+                        </div>
+                    </div> <!-- card end// -->
+
+                </div>
+            </form>
+        </div>
+    </section> <!-- content-main end// -->
+</section>
+
+<script>
+    function viewImage(event){
+        document.getElementById('imageView').src=URL.createObjectURL(event.target.files[0])
+    }
+</script>

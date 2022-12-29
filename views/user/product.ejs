@@ -1,0 +1,224 @@
+<section class="mt-50 mb-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="product-detail accordion-detail">
+          <div class="row mb-50">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div
+                class="detail-gallery"
+                id="img-container"
+                value="<%=productDetails.stock %> "
+              >
+                <span class="zoom-icon"><i class="fi-rs-search"></i></span>
+                <!-- MAIN SLIDES -->
+                <div class="product-image-slider">
+                  <figure class="border-radius-10">
+                    <img
+                      src="/productImages/<%=productDetails._id %>0.jpg"
+                      alt="product image"
+                    />
+                  </figure>
+                  <figure class="border-radius-10">
+                    <img
+                      src="/productImages/<%=productDetails._id %>1.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <figure class="border-radius-10">
+                    <img
+                      src="/productImages/<%=productDetails._id %>2.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <figure class="border-radius-10">
+                    <img
+                      src="/productImages/<%=productDetails._id %>3.jpg"
+                      alt=""
+                    />
+                  </figure>
+                </div>
+                <!-- THUMBNAILS -->
+                <div class="slider-nav-thumbnails pl-15 pr-15">
+                  <div>
+                    <img
+                      src="/productImages/<%=productDetails._id %>0.jpg"
+                      alt="product image"
+                    />
+                  </div>
+                  <div>
+                    <img
+                      src="/productImages/<%=productDetails._id %>1.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <img
+                      src="/productImages/<%=productDetails._id %>2.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <img
+                      src="/productImages/<%=productDetails._id %>3.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+     
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="detail-info">
+                <h2 class="title-detail"><%=productDetails.name %></h2>
+                <div class="product-detail-rating">
+                  <div class="pro-details-brand">
+                    <span>
+                      Brands: <a href="shop-grid-right.html">Bootstrap</a></span
+                    >
+                  </div>
+
+
+                  
+ 
+                </div>
+                <div class="clearfix product-price-cover">
+                  <div class="product-price primary-color float-left">
+                    <% if(productDetails.categoryDiscount) { %> 
+                      <p><s>₹<%=productDetails.Oprice %></s></p>
+                      <% } %> 
+                      <div>
+                        <ins
+                      ><span class="text-brand"
+                        >₹<%=productDetails.price %></span
+                      ></ins
+                    >
+                      </div>
+                      
+
+      
+                  </div>
+                </div>
+                <div class="bt-1 border-color-1 mt-15 mb-15"></div>
+                <div class="short-desc mb-30">
+                  <p><%=productDetails.description %></p>
+                </div>
+                <div class="product_sort_info font-xs mb-30">
+                  <ul>
+                    <li class="mb-10">
+                      <i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera Brand
+                      Warranty
+                    </li>
+                    <li class="mb-10">
+                      <i class="fi-rs-refresh mr-5"></i> 30 Day Return Policy
+                    </li>
+                    <li>
+                      <i class="fi-rs-credit-card mr-5"></i> Cash on Delivery
+                      available
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                <div class="detail-extralink">
+<% if(user){%> 
+<% if (max!=0) { %>
+    <button
+    id="addToCarts" class="btn btn-primary mt-5"
+    onclick="addToCart('<%=productDetails._id %>')"
+  >
+    Add to cart
+  </button>
+  <p id="limitedstock" style="color: red;"></p>
+    <%} else { %>
+        <button
+        id="addToCarts" class="btn btn-primary mt-5"
+        onclick="" disabled
+      >
+       Add to cart 
+      </button>
+      <p id="limitedstock" style="color: red;">Product Out Of Stock</p>
+    <% } %>
+    <% } %>
+    
+    <% if(!user){%> 
+      <button
+      id="" class="btn btn-primary mt-5"
+      onclick="gotoLOgin()"
+    >
+      Add to cart
+    </button>
+      <% } %> 
+                  
+                </div>
+                <ul class="product-meta font-xs color-grey mt-50">
+                  <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
+                  <li class="mb-5">
+                    Tags: <a href="#" rel="tag">Cloth</a>,
+                    <a href="#" rel="tag">Women</a>,
+                    <a href="#" rel="tag">Dress</a>
+                  </li>
+                  <li>
+                    Availability:<span class="in-stock text-success ml-5"
+                      >8 Items In Stock</span
+                    >
+                  </li>
+                </ul>
+              
+</section>
+<script>
+  var elem = document.getElementById("img-container");
+  var stk = elem.getAttribute("value");
+  let r=1;
+  function addToCart(proId) {
+    $.ajax({
+      url: "/addToCart/" + proId,
+      method: "get",
+      success: (response) => {
+        console.log(response);
+        console.log("stock", response.product.stock);
+        // console.log("cart count", response.quantity[0].limit);
+        if (response.status) {
+          console.log('hello');
+          if (response.product.stock - response.quantity[0]?.limit == 1) {
+            var limStk = document.getElementById("limitedstock")
+                    limStk.innerHTML="Product Out Of Stock"
+                    var addToCarts=document.getElementById("addToCarts")
+                    addToCarts.disabled = true;
+          }
+          else if(response.product.stock - response.quantity[0]?.limit<=1){
+            console.log('haaai');
+          }
+           else {
+            const Toast = Swal.mixin({
+  toast: true,
+  position: 'center',
+  showConfirmButton: false,
+  timer: 1000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'added to cart'
+})
+            console.log('hai');
+            let count = $("#cartCount").html();
+            count = parseInt(count) + 1;
+            console.log(count,'22');
+            $("#cartCount").html(count);
+          }
+        }
+      },
+    });
+  }
+
+function gotoLOgin(){
+  location.href="/login"
+}
+
+</script>

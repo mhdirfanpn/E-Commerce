@@ -1,0 +1,128 @@
+<section class="content-main">
+    <div class="row">
+      <div class="col-9">
+        <div class="content-header">
+          <h2 class="content-title">Add New Coupan</h2>
+        </div>
+      </div>
+      <form
+        action="/admin/add-coupan"
+        method="POST"
+      >
+        <div class="col-lg-10">
+          <div class="card mb-4">
+        
+            <div class="card-body">
+              <div class="mb-4">
+                <label for="product_name" class="form-label">Coupan ID</label>
+                <input
+                  required
+                  name="coupanId"
+                  type="text"
+                  placeholder="Type here"
+                  class="form-control"
+                  id="product_name"
+                />
+              </div>
+
+              <div class="mb-4">
+                <label for="product_name" class="form-label">Coupan Name</label>
+                <input
+                  required
+                  name="coupanName"
+                  type="text"
+                  placeholder="Type here"
+                  class="form-control"
+                  id="product_name"
+                />
+              </div>
+          
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-4">
+                    <label class="form-label">Max Amount</label>
+                    <div class="row gx-2">
+                      <input
+                        required
+                        name="max"
+                        placeholder="₹"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label class="form-label">Min Amount</label>
+                          <div class="row gx-2">
+                            <input
+                              required
+                              name="price"
+                              placeholder="₹"
+                              type="min"
+                              class="form-control"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label class="form-label">Expiry Date</label>
+                          <div class="row gx-2">
+                            <input
+                              required
+                              name="expiryDate"
+                              placeholder=""
+                              type="date"
+                              class="form-control"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label class="form-label">Coupan Percentage</label>
+                          <div class="row gx-2">
+                            <input
+                              required
+                              name="percentage"
+                              placeholder="%"
+                              type="number"
+                              class="form-control"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- card end// -->
+        </div>
+       
+       
+        <div class="col-lg-10">
+          <div class="card mb-4">
+            <div class="card-body">
+              <button type="submit" class="btn btn-md rounded font-sm hover-up">
+                Publish
+              </button>
+              <!-- <a href="/admin/products" class="btn btn-light rounded font-md ms-1"
+                >Cancel</a
+              > -->
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>

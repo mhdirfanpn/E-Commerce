@@ -1,0 +1,154 @@
+<section
+  class="product-tabs section-padding position-relative wow fadeIn animated"
+>
+  <div class="bg-square"></div>
+  <div class="container">
+    <div class="tab-header">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="nav-tab-one"
+            data-bs-toggle="tab"
+            data-bs-target="#tab-one"
+            type="button"
+            role="tab"
+            aria-controls="tab-one"
+            aria-selected="true"
+          >
+            <%=cat[0].category %>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <!-- End nav-tabs -->
+    <div class="tab-content wow fadeIn animated" id="myTabContent">
+      <div
+        class="tab-pane fade show active"
+        id="tab-one"
+        role="tabpanel"
+        aria-labelledby="tab-one"
+      >
+        <div class="row product-grid-4">
+          <% cat.forEach(element=>{ %>
+
+          <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+            <div class="product-cart-wrap mb-30">
+              <div class="product-img-action-wrap">
+                <div class="product-img product-img-zoom">
+                  <a href="/product/<%=element._id %>">
+                    <img
+                      class="default-img"
+                      src="/productImages/<%=element._id %>0.jpg"
+                      alt=""
+                    />
+                    <!-- <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt=""> -->
+                  </a>
+                </div>
+              </div>
+              <div class="product-content-wrap">
+                <div class="product-category">
+                  <a href="shop-grid-right.html">Clothing</a>
+                </div>
+                <h2>
+                  <a href="shop-product-right.html"><%=element.name %></a>
+                </h2>
+              
+
+
+                <div class="product-price">
+                  <% if(element.categoryDiscount) { %> 
+                  <p><s>₹<%=element.Oprice %></s></p>
+                  <% } %>  
+                  <div>
+                    <span>₹<%=element.price %></span>
+                  </div>
+                  
+              
+                  <!-- <span class="old-price">$245.8</span> -->
+                </div>
+                <% if(user){ %> 
+                <div class="product-action-1 show">
+                  <a
+                    aria-label="Add To Wishlist"
+                    class="action-btn hover-up"
+                    onclick="addToWishlist('<%=element._id %>')"
+                    ><i class="fi-rs-heart"></i
+                  ></a>
+                  <!-- <a aria-label="Add To Cart" class="action-btn hover-up" onclick="addToCart('<%=element._id %>')" ><i class="fi-rs-shopping-bag-add"></i></a>
+                                            <p id="limitedstock" style="color: red;"></p> -->
+                </div>
+               <% } %> 
+              </div>
+            </div>
+          </div>
+
+          <% }) %>
+        </div>
+        <!-- End product-grid-4 -->
+      </div>
+      <!-- En tab one (Featured) -->
+
+      <!--En tab two (Popular)-->
+
+      <!--En tab three (New added)-->
+    </div>
+    <!--End tab-content-->
+  </div>
+</section>
+
+<script>
+  $.ajax({
+    url: "/addToCart/" + proId,
+    method: "get",
+    success: (response) => {
+      console.log("stock", response.product.stock);
+      console.log("cart count", response.quantity[0].limit);
+      if (response.status) {
+        if (response.product.stock - response.quantity[0].limit == 1) {
+          var limStk = document.getElementById("limitedstock");
+          limStk.innerHTML = "Product Out Of Stock";
+          var addToCarts = document.getElementById("addToCarts");
+          addToCarts.disabled = true;
+        } else if (response.product.stock - response.quantity[0].limit <= 1) {
+          console.log("haaai");
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "bottom-center",
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: false,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "success",
+            title: "Added to Cart",
+          });
+          let count = $("#cartCount").html();
+          count = parseInt(count) + 1;
+          $("#cartCount").html(count);
+        }
+      }
+    },
+  });
+
+  function addToWishlist(proId) {
+    $.ajax({
+      url: "/addToWishlist/" + proId,
+      method: "get",
+      success: (response) => {
+        console.log(response);
+        if(response.status){
+          let wish = $("#wishlistCount").html();
+          wish = parseInt(wish) + 1;
+          $("#wishlistCount").html(wish);
+        }
+      },
+    });
+  }
+</script>

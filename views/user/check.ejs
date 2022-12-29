@@ -1,0 +1,412 @@
+<section class="mt-50 mb-50">
+  <div class="container">
+    <form action="" id="checkout-form">
+      <div class="row">
+        <div class="col-12">
+          <div class="divider mt-50 mb-50"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-25">
+            <h4>Billing Details</h4>
+          </div>
+          <span
+            >Want to ship to a new location?
+            <a href="profile/address">Add new address</a> or select
+          </span>
+          <div class="mb-sm-15">
+            <br />
+            <div class="address-list mb-3">
+              <% users.userAddress.forEach(users=>{ %>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="address"
+                  id="exampleRadios1"
+                  value=" <%=users.name %> ,<%=users.addressLine %> ,<%=users.state %> ,<%=users.zipCode %> "
+                  checked
+                />
+                <label class="form-check-label" for="exampleRadios1">
+                  <%=users.name %> ,<%=users.addressLine %> ,<%=users.state %>
+                  ,<%=users.zipCode %>
+                </label>
+              </div>
+              <% }) %>
+            </div>
+
+            <div class="toggle_info mt-5">
+                <span
+                  ><i class="fi-rs-label mr-10 mt-5"></i
+                  ><span class="text-muted">Have a coupon?</span>
+                  <a
+                    href="#coupon"
+                    data-bs-toggle="collapse"
+                    class="collapsed"
+                    aria-expanded="false"
+                    >Click here to enter your code</a
+                  ></span
+                >
+              </div>
+              <div class="panel-collapse collapse coupon_form" id="coupon">
+                <div class="panel-body">
+                  <p class="mb-30 font-sm">
+                    If you have a coupon code, please apply it below.
+                  </p>
+                  
+                  <input type="text" name="couponName" id="couponName" />
+                  <p id="successCoupon" style="color: #14de4d;"></p>
+                  <p id="errorCoupon" style="color: red;"></p>
+                  <a class="btn btn-md mt-5" onclick="applyCoupan()">Apply Coupan</a>
+                </div>
+              </div>
+            <!-- <input type="text" value="{{user}}" name="userId" hidden> -->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="order_review">
+            <div class="mb-20">
+              <h4>Your Orders</h4>
+            </div>
+            <div class="table-responsive order_table text-center">
+              <table class="table">
+         
+
+                  <thead>
+                    <tr>
+                        <th colspan="2">Product</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <% product.forEach(element=>{ %>   
+                    <tr>
+                        <td class="image product-thumbnail"><img src="/productImages/<%=element.Product._id %>0.jpg" alt="#"></td>
+                        <td>
+                            <h5 style="color: #088178;"><a href=""></a><%=element.Product.name %></h5> <span class="product-qty">x  <%=element.quantity %></span>
+                        </td>
+                        <td>₹<%=element.Product.price %></td>
+                    </tr>
+                    <% }) %> 
+            
+               
+             
+                  <tr>
+                    <th>SubTotal</th>
+                    <td class="product-subtotal" colspan="2">₹<%=total %></td>
+                  </tr>
+                  <tr>
+                    <th> Shipping</th>
+                    <td colspan="2"><em>Free Shipping</em></td>
+                  </tr>
+                  <tr>
+                    <th><strong>Grand Total</strong></th>
+                    <td colspan="2" class="product-subtotal">
+                      <span class="font-xl text-brand fw-900">₹</span>
+                      <span class="font-xl text-brand fw-900" id="totalAmount"
+                        ><%=total %>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+            <div class="payment_method">
+              <div class="mb-25">
+                <h5>Payment</h5>
+              </div>
+              <div class="payment_option">
+                <div class="">
+                  <input class="form-check-input" required=""  name="paymentMethod"
+                    type="radio" id="wallet" value="wallet" checked="">
+                  <label class="form-check-label" for="wallet" name="paymentMethod"
+                    aria-controls="wallet">Wallet Payment</label>
+                    <input type="text" id="userWallet" value="<%=users.wallet%>" hidden>
+                </div>
+                <div class="walletErr"><p class="walletErr" id="walletErr" style="color: red;"></p></div>
+             
+                <div class="">
+                  <input
+                    class="form-check-input"
+                    required=""
+                    type="radio"
+                    name="paymentMethod"
+                    id="razorpay"
+                    value="razorpay"
+                    checked=""
+                  />
+                  <label
+                    class="form-check-label"
+                    name="paymentMethod"
+                    for="razorpay"
+                    aria-controls="checkPayment"
+                    >Razorpay</label
+                  >
+                </div>
+                <div class="">
+                  <input
+                    class="form-check-input"
+                    required=""
+                    name="paymentMethod"
+                    type="radio"
+                    id="paypal"
+                    value="paypal"
+                    checked=""
+                  />
+                  <label
+                    class="form-check-label"
+                    for="paypal"
+                    name="paymentMethod"
+                    aria-controls="paypal"
+                    >Paypal</label
+                  >
+                </div>
+
+                <div class="">
+                  <input
+                    class="form-check-input"
+                    required=""
+                    type="radio"
+                    id="cod"
+                    value="Cash on Delivery"
+                    name="paymentMethod"
+                    checked=""
+                  />
+                  <label
+                    class="form-check-label"
+                    name="paymentMethod"
+                    for="cod"
+                    aria-controls="bankTranfer"
+                    >Cash on Delivery</label
+                  >
+                </div>
+              
+              </div>
+            </div>
+            <div class="input-group-append">
+              <button
+                type="submit"
+                id="csubmit"
+                class="btn btn-primary mt-5"
+              >
+                PLACE ORDER
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AXfaHlwleuIu4_FKrQvK-V1LlxYy5fIh_VDs6xqcIyfeU1UOIPdhFVZheDsv1vnBihPxOul_CsqiGsEK&components=YOUR_COMPONENTS"></script>
+
+<!-- <script src="/javascripts/walletCheck.js"></script> -->
+
+<script>
+
+
+
+  $("#checkout-form").submit((e) => {
+    e.preventDefault();
+    $.ajax({
+      url: "/place-order",
+      method: "post",
+      data: $("#checkout-form").serialize(),
+      success: (response) => {
+        alert("Your order has been placed");
+        if (response.codSuccess) {
+          location.href = "/order-success";
+        }
+        if (response.razorpay) {
+          razorpayPayment(response);
+        }
+        if (response.payPal) {
+          for (let i = 0; i < response.links.length; i++) {
+            if (response.links[i].rel === "approval_url") {
+              location.href = response.links[i].href;
+            }
+          }
+        }if (response.wallet) {
+        console.log('france',response)
+        window.location.href = '/order-success'
+      }
+      },
+    });
+  });
+
+  function razorpayPayment(order) {
+    var options = {
+      key: "rzp_test_JfiruKTJHf8QRk", // Enter the Key ID generated from the Dashboard
+      amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      currency: "INR",
+      name: "Evara",
+      description: "Test Transaction",
+      image: "https://example.com/your_logo",
+      order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      handler: function (response) { 
+       verifyPayment(response, order);
+      },
+      "modal": {
+        "ondismiss": function(){
+          window.location.replace('http://localhost:3000/cancel-payment?id='+order.receipt)  
+        }
+    },
+      prefill: {
+        name: "Gaurav Kumar",
+        email: "gaurav.kumar@example.com",
+        contact: "9999999999",
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+  }
+  function verifyPayment(payment, order) {
+    $.ajax({
+      url: "/verify-payment",
+      data: {
+        payment,
+        order,
+      },
+      method: "post",
+      success: (response) => {
+        if (response.status) {
+          location.href = "/order-success";
+        } else {
+          alert("payment failed");
+        }
+      },
+    });
+  }
+
+  $("#add-address-checkout").submit((e) => {
+    e.preventDefault();
+    $.ajax({
+      url: "/add-address",
+      method: "post",
+      data: $("#add-address-checkout").serialize(),
+      success: (response) => {
+        alert("Your order has been placed");
+        if (response) {
+          location.href = "/checkout";
+        }
+      },
+    });
+  });
+
+  function applyCoupan() {
+    console.log("helooooooooo");
+    let coupon = document.getElementById("couponName").value;
+    let amountDue = document.getElementById("totalAmount").innerText;
+    console.log("amount", amountDue, coupon);
+    $.ajax({
+      url: "/apply-coupan",
+      method: "post",
+      data: {
+        coupon,
+        amountDue,
+      },
+      success: (response) => {
+        console.log(response);
+        if (response.verify) {
+          console.log("Valid", response.discountAmount, response.totalAmount);
+          var newAmount = response.totalAmount - response.discountAmount;
+          console.log("new amountttttt", response.totalAmount);
+          document.getElementById('successCoupon').innerText="Coupan Applied"
+          document.getElementById("totalAmount").innerHTML = newAmount;
+        }
+
+                else {
+          console.log("Something went wrong")
+          let k = response.used
+          console.log(k)
+
+          if (response.used) {
+           console.log(response.used,'coupon used')
+            document.getElementById('errorCoupon').innerText = 'Coupon already Applied'
+
+          }
+          else if (response.minAmount) {
+            document.getElementById('errorCoupon').innerText = response.minAmountMsg;
+          }
+          else if (response.maxAmount) {
+            document.getElementById('errorCoupon').innerText = response.maxAmountMsg
+          }
+          else if (response.invalidDate) {
+            document.getElementById('errorCoupon').innerText = response.invalidDateMsg
+          }
+          else if (response.invalidCoupon) {
+            document.getElementById('errorCoupon').innerText = response.invalidCouponMsg
+          }
+          else if (response.noCoupon) {
+            document.getElementById('errorCoupon').innerText = 'Invalid Coupon Details'
+          }
+        }
+
+      },
+    });
+  }
+
+  // function applyCoupan(event){
+  // event.preventDefault()
+  //   let coupon = document.getElementById('couponName').value;
+  //   let amountDue = document.getElementById('totalAmount').innerText
+  //   console.log('amount',amountDue)
+  //   $.ajax({
+
+  //     url: '/applyCoupon',
+  //     data: {
+  //       coupon,
+  //       amountDue,
+  //     },
+  //     method: 'post',
+  //     success: (response) => {
+  //       console.log(response,response.used)
+  //       if (response.verify) {
+  //         console.log("Valid",response.discountAmount)
+  //         var newAmount= amountDue - response.discountAmount
+  //         document.getElementById('totalAmount').innerHTML = "₹ " + newAmount
+
+  //       }
+  //       else {
+  //         console.log("Something went wrong")
+  //         let k = response.used
+  //         console.log(k)
+
+  //         if (response.used) {
+  //          console.log(response.used,'coupon used')
+  //           document.getElementById('errorCoupon').innerText = 'Coupon already Applied'
+
+  //         }
+  //         else if (response.minAmount) {
+  //           document.getElementById('errorCoupon').innerText = response.minAmountMsg;
+  //         }
+  //         else if (response.maxAmount) {
+  //           document.getElementById('errorCoupon').innerText = response.maxAmountMsg
+  //         }
+  //         else if (response.invalidDate) {
+  //           document.getElementById('errorCoupon').innerText = response.invalidDateMsg
+  //         }
+  //         else if (response.invalidCoupon) {
+  //           document.getElementById('errorCoupon').innerText = response.invalidCouponMsg
+  //         }
+  //         else if (response.noCoupon) {
+  //           document.getElementById('errorCoupon').innerText = 'Invalid Coupon Details'
+  //         }
+  //       }
+  //     }
+
+  //   });
+  // }
+</script>

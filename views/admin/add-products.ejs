@@ -1,0 +1,186 @@
+<section class="content-main">
+  <div class="row">
+    <div class="col-9">
+      <div class="content-header">
+        <h2 class="content-title">Add New Product</h2>
+      </div>
+    </div>
+    <form
+      action="/admin/add-product"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="col-lg-10">
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4>Basic</h4>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <label for="product_name" class="form-label">Product title</label>
+              <input
+                required
+                name="name"
+                type="text"
+                placeholder="Type here"
+                class="form-control"
+                id="product_name"
+              />
+            </div>
+            <!-- <div class="mb-4">
+              <label for="product_slug" class="form-label">Slug</label>
+              <input
+                name="slug"
+                type="text"
+                placeholder="Type here"
+                class="form-control"
+                id="product_slug"
+              />
+            </div> -->
+            <div class="mb-4">
+              <label class="form-label">Description</label>
+              <textarea
+                required
+                name="description"
+                placeholder="Type here"
+                class="form-control"
+                rows="8"
+              ></textarea>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-4">
+                  <label class="form-label"> Price</label>
+                  <div class="row gx-2">
+                    <input
+                      required
+                      name="price"
+                      name="oPrice"
+                      placeholder="₹"
+                      type="number"
+                      class="form-control"
+                    />
+            
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-4">
+                    <label class="form-label">Stock</label>
+                    <div class="row gx-2">
+                      <input
+                        required
+                        name="stock"
+                        placeholder="Stock"
+                        type="number"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- card end// -->
+      </div>
+      <div class="col-lg-10">
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4>Media</h4>
+          </div>
+          <div class="card-body">
+            <div class="input-upload">
+              <img src="/admin-assets/imgs/theme/upload.svg" alt="" />
+              <input
+                name="Image1"
+                multiple
+                class="form-control"
+                type="file"
+              />
+            </div>
+            <div class="input-upload">
+              <img src="/admin-assets/imgs/theme/upload.svg" alt="" />
+              <input
+                name="Image2"
+                multiple
+                class="form-control"
+                type="file"
+              />
+            </div>
+            <div class="input-upload">
+              <img src="/admin-assets/imgs/theme/upload.svg" alt="" />
+              <input
+                name="Image3"
+                multiple
+                class="form-control"
+                type="file"
+              />
+            </div>
+            <div class="input-upload">
+              <img src="/admin-assets/imgs/theme/upload.svg" alt="" />
+              <input
+                name="Image4"
+                multiple
+                class="form-control"
+                type="file"
+              />
+            </div>
+            
+          </div>
+          <!-- <div class="card-body">
+            <div class="input-upload">
+              <img src="/admin-assets/imgs/theme/upload.svg" alt="" />
+              <input
+                name="productImage"
+                multiple
+                class="form-control"
+                type="file"
+              />
+            </div>
+            
+          </div> -->
+          
+        </div>
+      </div>
+      <div class="col-lg-10">
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4>Categories</h4>
+          </div>
+          <div class="card-body">
+            <div class="row gx-2">
+              <div class="mb-4">
+                <label class="form-label">Categories</label>
+                <select class="form-select" name="category">
+                  <option>Categories</option>
+
+                  <% category.forEach(category=>{ %>
+                  <option><%= category.name %>
+                    </option>
+                  > <% }) %>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-10">
+        <div class="card mb-4">
+          <div class="card-body">
+            <button type="submit" class="btn btn-md rounded font-sm hover-up">
+              Publish
+            </button>
+            <!-- <a href="/admin/products" class="btn btn-light rounded font-md ms-1"
+              >Cancel</a
+            > -->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- <script defer src="https://cdn.crop.guide/loader/l.js?c=JYHZXT"></script> -->

@@ -1,0 +1,285 @@
+<section class="content-main">
+  <div class="content-header">
+    <div>
+      <h2 class="content-title card-title">Order detail</h2>
+    
+      <p>Details for Order ID:  <%= orderDetails._id %></p>
+    </div>
+  </div>
+  <div class="card">
+    <header class="card-header">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
+          <span>
+            <i class="material-icons md-calendar_today"></i>
+            <b> <%= orderDetails.date.toDateString() %></b>
+          </span>
+          <br />
+          <small class="text-muted">Order ID:  <%= orderDetails._id %></small>
+        </div>
+        <div class="col-lg-6 col-md-6 ms-auto text-md-end">
+          <!-- <select
+            class="form-select d-inline-block mb-lg-0 mb-15 mw-200"
+            id="status"
+            onchange="status('<%=this %>',' <%= orderDetails._id %>','<%= orderDetails.products._id %>')"
+          >
+          
+            <option>Change status</option>
+            <option>Awaiting payment</option>
+            <option>placed</option>
+            <option>Shipped</option>
+            <option>Delivered</option>
+          </select> -->
+          <!-- <a class="btn btn-primary" href="#">Save</a>
+          <a
+            class="btn btn-danger print ms-2"
+            href="/delete-order/<%=products._id %>"
+            >Delete</a
+          > -->
+        </div>
+      </div>
+    </header>
+    <!-- card-header end// -->
+    <div class="card-body">
+      <div class="row mb-50 mt-20 order-info-wrap">
+        <!-- <div class="col-md-4">
+          <article class="icontext align-items-start">
+            <span class="icon icon-sm rounded-circle bg-primary-light">
+              <i class="text-primary material-icons md-person"></i>
+            </span>
+            <div class="text">
+              <h6 class="mb-1">Customer</h6>
+              <p class="mb-1">
+                <%=orderDetails.deliveryDetails[0].name %> <br />
+                <template
+                  class="__cf_email__"
+                  data-cfemail="e2838e879aa2879a838f928e87cc818d8f"
+                  >[email&#160;protected]</template
+                >
+                <br />
+                +91<%=orderDetails.deliveryDetails[0].mobile %>
+              </p>
+              <a href="#">View profile</a>
+            </div>
+          </article>
+        </div> -->
+        <!-- col// -->
+        <div class="col-md-4">
+          <article class="icontext align-items-start">
+            <span class="icon icon-sm rounded-circle bg-primary-light">
+              <i class="text-primary material-icons md-local_shipping"></i>
+            </span>
+            <div class="text">
+              <h6 class="mb-1">Order info</h6>
+              <p class="mb-1">
+                Shipping: Evara inc
+                <!-- <br> Pay method: card <br> Status: new -->
+              </p>
+              <!-- <a href="#">Download info</a> -->
+            </div>
+          </article>
+        </div>
+        <!-- col// -->
+        <div class="col-md-4">
+          <article class="icontext align-items-start">
+            <span class="icon icon-sm rounded-circle bg-primary-light">
+              <i class="text-primary material-icons md-place"></i>
+            </span>
+            <div class="text">
+              <h6 class="mb-1">Deliver to</h6>
+              <p class="mb-1">
+                Address: <%=orderDetails.deliveryDetails[0].address %>
+                <!-- <br />State: <%=orderDetails.deliveryDetails[0].state %><br /> -->
+                <!-- <%=orderDetails.deliveryDetails[0].city %> <br />Number:
+                <%=orderDetails.deliveryDetails[0].mobile %> -->
+              </p>
+              <!-- <a href="#">View profile</a> -->
+            </div>
+          </article>
+        </div>
+        <!-- col// -->
+      </div>
+      <!-- row // -->
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th width="30%">Product</th>
+                  <th width="15%">Unit Price</th>
+                  <th width="15%">Quantity</th>
+                  <th width="15%">Total</th>
+                  <th width="30%">Status</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <% products.forEach(element=>{ %>
+                <tr>
+                  <td>
+                    <a class="itemside" href="#">
+                      <div class="left">
+                        <img
+                          src="/productImages/<%=element.Product._id %>0.jpg"
+                          width="40"
+                          height="40"
+                          class="img-xs"
+                          alt="Item"
+                        />
+                      </div>
+                      <div class="info"><%=element.Product.name %></div>
+                    </a>
+                  </td>
+                  <td>₹ <%=element.Product.price %></td>
+                  <td><%=element.quantity %></td>
+
+                  <td >
+                    <%= element.Product.price* element.quantity %>
+                  </td>
+                  <td> 
+                    <% if(element.status=="placed" || element.status=="Shipped"){ %> 
+                    <select
+                    class="form-select d-inline-block mb-lg-0 mb-15 mw-200"
+                    id="<%= element.Product._id%>"
+                    onchange="status('<%=this %>',' <%= element._id %>','<%= element.Product._id%>')"
+                  >
+                  <option value="<%=element.status %>" selected><%=element.status %></option>
+                  <% if(element.status!="Shipped"){ %>
+                    <option>placed</option>
+                    <% } %> 
+                    <option>Shipped</option>
+                    <option>Delivered</option>
+                  </select>
+                  <% } %> 
+                  <% if(element.status=="Cancelled"){ %> 
+                  <a  style="color: red;">Cancelled</a>
+                  <!-- <h5><b style="color:red ;">Refund</b></h5> -->
+                  <% } %> 
+                  <% if(element.status=="Delivered"){ %> 
+                  <h5><b style="color:rgb(3, 169, 0) ;">Delivered</b></h5>
+                  <% } %>
+                  <% if(element.status=="refunded"){ %> 
+                    <h5><b style="color:rgb(3, 169, 0) ;">refunded</b></h5>
+                    <% } %>
+                  <% if(element.status=="return" && element.status!="refunded"){ %> 
+                    <a onclick="ret(' <%= element._id %>','<%= element.Product._id%>',' <%= orderDetails.user %>','<%=element.Product.price %>','<%=element.quantity %>')" style="color: green;">approve refund</a>
+                    <!-- <h5><b style="color:rgb(3, 169, 0) ;">Delivered</b></h5> -->
+                    <% } %>
+                
+                 </td>
+                 <!-- <% if(element.status=="Cancelled"){ %> 
+                  <h5><b style="color:rgb(210, 40, 91) ;">Waiting for refund</b></h5>
+                  <% } %>  -->
+                </tr>
+
+                <% }) %>
+
+
+                <tr>
+                  <td colspan="4">
+                    <article class="float-end">
+                      <!-- <dl class="dlist">
+                                                        <dt>Subtotal:</dt>
+                                                        <dd><%=orderDetails.deliveryDetails %> </dd>
+                                                    </dl> -->
+                      <!-- <dl class="dlist">
+                                                        <dt>Shipping cost:</dt>
+                                                        <dd>10.00</dd>
+                                                    </dl> -->
+                      <dl class="dlist">
+                        <dt>Grand total:</dt>
+                        <dd>
+                          <b class="h5"></b
+                          >₹ <%=orderDetails.totalAmount %>
+                        </dd>
+                      </dl>
+                      <!-- <dl class="dlist">
+                                                        <dt class="text-muted">Status:</dt>
+                                                        <dd>
+                                                            <span class="badge rounded-pill alert-success text-success">Payment done</span>
+                                                        </dd>
+                                                    </dl> -->
+                    </article>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- table-responsive// -->
+        </div>
+        <!-- col// -->
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4">
+          <div class="box shadow-sm bg-light">
+            <h6 class="mb-15">Payment Method</h6>
+            <p>
+              <%=orderDetails.paymentMethod %>
+              <!-- Business name: Grand Market LLC <br>
+                                    Phone: +1 (800) 555-154-52 -->
+            </p>
+          </div>
+          <!-- <div class="h-25 pt-4">
+                                <div class="mb-3">
+                                    <label>Notes</label>
+                                    <textarea class="form-control" name="notes" id="notes" placeholder="Type some note"></textarea>
+                                </div>
+                                <button class="btn btn-primary">Save note</button>
+                            </div> -->
+        </div>
+        <!-- col// -->
+      </div>
+    </div>
+    <!-- card-body end// -->
+  </div>
+  <!-- card end// -->
+</section>
+<!-- content-main end// -->
+
+<script>
+  function status(value,id,proId) {
+    let select = document.getElementById(proId);
+    console.log(select.value);
+    console.log(id);
+    console.log(proId);
+    let status=select.value
+    $.ajax({
+      url: "/admin/change-status",
+      method: "post",
+      data: {
+        status,
+        id,
+        proId
+      },
+      success: (response) => {
+        location.reload()
+        if (response) {
+          location.reload()
+        } 
+      },
+    });
+  }
+
+function ret(orderId,prodId,user,price,quantity){
+  console.log(orderId,prodId,user);
+  $.ajax({
+      url: "/admin/approve-refund",
+      method: "post",
+      data: {
+        orderId,
+        prodId,
+        user,
+        price,
+        quantity,
+        status:'refunded'
+      },
+      success: (response) => {
+        location.reload()
+        if (response) {
+          location.reload()
+        } 
+      },
+    });
+}
+
+</script>

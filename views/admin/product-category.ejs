@@ -1,0 +1,132 @@
+<section class="content-main">
+  <div class="content-header">
+    <div>
+      <h2 class="content-title card-title">Categories</h2>
+    </div>
+    <div>
+      <input
+        type="text"
+        placeholder="Search Categories"
+        class="form-control bg-white"
+      />
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-3">
+          <form action="/admin/add-category" method="POST"  enctype="multipart/form-data">
+            <div class="mb-4">
+              <label for="product_name" class="form-label">Category Name</label>
+              <input
+                required
+                name="name"
+                type="text"
+                placeholder="Enter category"
+                class="form-control"
+                id="product_name"
+              />
+            </div>
+            <!-- <div class="mb-4">
+                <label for="product_slug" class="form-label">Media</label>
+                <img src="/admin-assets/imgs/theme/upload.svg" alt="" />
+                <input
+                  name="categoryImage"
+                  multiple
+                  class="form-control"
+                  type="file"
+                />
+              </div> -->
+              <h4>Media</h4>
+              <div class="input-upload">
+              
+                <img src="/admin-assets/imgs/theme/upload.svg" alt="" />
+                <input
+                name="categoryImage"
+                multiple
+                class="form-control"
+                type="file"
+                />
+              </div>
+            <!-- <div class="mb-4">
+              <label class="form-label">Description</label>
+              <input
+                name="description"
+                placeholder="Type here"
+                class="form-control"
+              />
+            </div> -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Create category</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-9">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                    <th>No</th>
+                  <th>Name</th>
+                  <!-- <th>Description</th> -->
+                  <!-- <th>Price</th>
+                  <th>Registered</th> -->
+                  <th class="">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% let i=1 %> 
+                <% categoryDetails.forEach(category=>{ %>
+              
+    
+                <tr>
+                    <td width="15%">
+                        <a href="#" class="itemside">
+                          <div class="left">
+                            <p class="fs-5"><%=i %></p>
+                          </div>
+                        </a>
+                      </td>
+                  <td width="30%">
+                    <a href="#" class="itemside">
+                      
+
+                      <a href="#" class="itemside">
+                        <div class="left">
+                            <img style="width: 50px; height: 50px;" src="/category-images/<%=category._id %>.jpg"  alt="" />
+                        </div>
+                      <div class="info pl-3 ">
+                        
+                        <h6 class="mb-0 title"><%=category.name %></h6>
+                      </div>
+                    </a>
+                    </a>
+                  </td>
+                  <!-- <td>
+                    <div class="info">
+                      <p class="mb-0 title"><#%=category.description %> </p>
+                    </div>
+                  </td> -->
+                 
+                  <!-- <td>
+                    <div class="info">
+                      <p class="mb-0 title">dsdfgh</p>
+                    </div>
+                  </td>
+                 
+                  <td>08.07.2020</td> -->
+                  <td class="">
+                    <!-- <a href="/admin/edit-category/<%=category._id %> " class="btn btn-sm btn-brand rounded font-sm mt-15"
+                      >Edit</a
+                    > -->
+                    <a href="/admin/delete-category/<%=category._id %> " class="btn btn-sm btn-brand rounded font-sm mt-15" onclick="return confirm('Are you sure you want to delete <%=category.name %>?');"
+                      >Delete</a
+                    >
+                  </td>
+                </tr>
+
+                <% i++}) %>
+              </tbody>
+            </table>
+            <!-- table-responsive.// -->
+            

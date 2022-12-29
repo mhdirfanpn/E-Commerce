@@ -1,0 +1,213 @@
+<section class="pt-100 pb-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 m-auto">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="dashboard-menu">
+                <ul class="nav flex-column" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/profile"><i class="fi-rs-settings-sliders mr-10"></i>Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a  href="/profile/orders"><i class="fi-rs-shopping-bag mr-10"></i>Orders</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/profile/address" class="nav-link active"><i class="fi-rs-marker mr-10"></i>My Address</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/profile/edit"><i class="fi-rs-user mr-10"></i>Account details</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout"><i class="fi-rs-sign-out mr-10"></i>Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="tab-content dashboard-content">
+                <div class="tab-pane fade active show" id="address" role="tabpanel" aria-labelledby="address-tab">
+                  <div class="row">
+                    
+  
+                
+                    
+                    <!-- <div id="635ca8015dd256aa4b725ca1" class="col-lg-6 mb-4">
+                      <div class="card mb-3 mb-lg-0">
+                        <div class="card-header">
+                          <h5 class="mb-0">Name - Number</h5>
+                        </div>
+                        <div class="card-body">
+                          <address class="mb-1">
+                            Address,<br>
+                            Pin<br>
+                            Place
+                          </address>
+                          <a onclick="editAddress('634e51af5fe93f85e70f477d','635ca7d65dd256aa4b725ca0')" class="btn-small text-muted">Edit</a>
+                          <a onclick="deleteAddress('634e51af5fe93f85e70f477d','635ca7d65dd256aa4b725ca0')" class="btn-small text-danger ms-2">Delete</a>
+                        </div>
+                      </div>
+                    </div> -->
+                    
+                  </div>
+                  <div class="row mx-1 mt-2">
+
+
+                    <form id="add-address-checkout" action="" method="post">
+                        <div class="form-group">
+                          <label for="">Name</label>
+                          <input id="name" required="" value="<%=user.name %>" readonly type="text" name="name" placeholder="Name *" onchange="">
+                          <span id="name" class="mt-2 text-danger" style="font-size: 13px"></span>
+                        </div>
+                       <label for="">Email</label>
+                        <div class="form-group">
+                          <input required="" id="Email" type="text" value="<%=user.email %>" readonly name="email" placeholder="Email address *" onchange="">
+                          <span id="email" class="mt-2 text-danger" style="font-size: 13px"></span>
+                        </div>
+                        <label for="">Phone</label>
+                        <div class="form-group">
+                          <input required="" id="phonenumber" value="<%=user.phoneNumber %>" readonly type="text" name="phone" placeholder="Phone *" onchange="">
+                          <span id="phonenumbers" class="mt-2 text-danger" style="font-size: 13px"></span>
+                        </div>
+                      </form>
+
+
+                    <div class="toggle_info">
+                      <span><i class="fi-rs-user mr-10"></i> <a href="#newAddress" data-bs-toggle="collapse" class="collapsed" aria-expanded="false">Edit details</a></span>
+                    </div>
+                    <div class="panel-collapse collapse login_form" id="newAddress">
+                      <div class="panel-body">
+                        <form id="add-address-checkout" action="/update-details" method="post">
+                          <div class="form-group">
+                            <label for="">Name</label>
+                            <input  required=""  type="text" name="name" placeholder="Name *" onchange="" onkeyup=" validateName()" id="contact-name">
+                            <span id="name-error" style="color: red;"></span>
+                          </div>
+                         <label for="">Email</label>
+                          <div class="form-group">
+                            <input required=""  type="text"  name="email" placeholder="Email address *" onchange=""  onkeyup=" validateEmail()" id="contact-email">
+                            <span id="email-error" style="color: red;"></span>
+                          </div>
+                          <label for="">Phone</label>
+                          <div class="form-group">
+                            <input required=""  type="text" name="phone" placeholder="Phone *" onchange="" onkeyup=" validatePhoneNumber()" id="contact-phonenumber">
+                            <span id="number-error" style="color: red;"></span>
+                          </div>
+                          <label for="">Password</label>
+                          <div class="form-group">
+                            <input required=""  type="text" name="password" placeholder="Password *" onchange="" onkeyup="validatePassword()" id="contact-password">
+                            <span id="password-error" style="color: red;"></span>
+                          </div>
+                          <div class="form-group">
+                            <button type="submit" onclick="validateForm()" class="btn btn-outline btn-lg btn-brand-outline font-weight-bold text-brand bg-white text-hover-white border-radius-5 btn-shadow-brand hover-up" id="contact-submit">Update Details</button>
+                            <div id="submit-error" style="color: red;"></div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+<script>
+  var firstNameError = document.getElementById("name-error");
+  var emailError = document.getElementById("email-error")
+  var passwordError = document.getElementById("password-error")
+  var submitError = document.getElementById("submit-error");
+  var  phoneNumberError = document.getElementById("number-error")
+  
+  
+  
+  
+  function validateName(){
+      var fname = document.getElementById("contact-name").value;
+  
+      if(fname.length ==0){
+          firstNameError.innerHTML ='First Name required';
+          return false;
+      }
+      if(!fname.match(/(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)/)){
+  
+          firstNameError.innerHTML = 'Invalid name';
+          return false;
+      }
+      else{
+      firstNameError.innerHTML = '' ;
+      return true ;
+      }
+  }
+  
+  
+  function validateEmail(){
+      var email = document.getElementById("contact-email").value;
+      if(email == "" || email == null){
+          emailError.innerHTML="Email required";
+          return false;
+      }
+      if(!email.match(/^[a-zA-Z0-9.!#$%&’+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/)){
+  
+          emailError.innerHTML = 'Email Invalid';
+          return false;
+  
+      }
+      emailError.innerHTML="";
+      return true;
+  }
+  
+  function validatePassword(){
+      var password = document.getElementById("contact-password").value;
+      if(password=="" || password == null){
+          passwordError.innerHTML="Password required";
+          return false;
+      }
+      if(password.length<4 || password.length<4  ){
+  
+          passwordError.innerHTML = '4 digits required';
+          return false;
+  
+      }
+      passwordError.innerHTML="";
+      return true;
+  }
+  
+  
+  function validatePhoneNumber(){
+      var phoneNumber = document.getElementById("contact-phonenumber").value;
+
+      if(phoneNumber.length==0){
+          phoneNumberError.innerHTML="Mobile number is required";
+          return false;
+      }
+      if(phoneNumber.length<10){
+          phoneNumberError.innerHTML="Enter 10 digit mobile number";
+          return false;
+      }
+      if(phoneNumber.length>10){
+          phoneNumberError.innerHTML="Enter 10 digit mobile number";
+          return false;
+      }
+      phoneNumberError.innerHTML="";
+      return true;
+  }
+  
+  
+  function validateForm(){
+      if(!validateName()  && !validateEmail()  && !validatePassword() && validatePhoneNumber()){
+      
+          submitError.innerHTML = 'Please fill the fields to submit';
+          setTimeout(function(){submitError.style.display = 'none';} , 4000)
+          return false;
+      }
+  
+  }
+  </script>
+  
+  

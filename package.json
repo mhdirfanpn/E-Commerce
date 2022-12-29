@@ -1,0 +1,36 @@
+{
+  "name": "myproject",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "bcrypt": "^5.1.0",
+    "connect-mongodb-session": "^3.1.1",
+    "cookie-parser": "~1.4.4",
+    "currency-converter-lt": "^2.0.0-beta.0",
+    "debug": "~2.6.9",
+    "easyinvoice": "^2.3.3",
+    "ejs": "^3.1.8",
+    "express": "~4.16.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-fileupload": "^1.4.0",
+    "express-mongodb-session": "^3.2.1",
+    "express-session": "^1.17.3",
+    "http-errors": "~1.6.3",
+    "moment": "^2.29.4",
+    "mongodb": "^4.11.0",
+    "mongoos": "^0.0.1-security",
+    "mongoose": "^6.7.2",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.20",
+    "objectid": "^2.3.0",
+    "paypal-rest-sdk": "^1.8.1",
+    "pdf-creator-node": "^2.3.5",
+    "razorpay": "^2.8.4",
+    "sweetalert": "^2.1.2",
+    "twilio": "^3.83.2"
+  }
+}

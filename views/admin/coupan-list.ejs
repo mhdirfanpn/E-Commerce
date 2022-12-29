@@ -1,0 +1,135 @@
+<section class="content-main">
+    <div class="content-header">
+        <div>
+            <h2 class="content-title card-title">Products List</h2>
+            <!-- <p>Lorem ipsum dolor sit amet.</p> -->
+        </div>
+        <div>
+            <!-- <a href="#" class="btn btn-light rounded font-md">Export</a>
+            <a href="#" class="btn btn-light rounded  font-md">Import</a> -->
+            <a href="coupan-form" class="btn btn-primary btn-sm rounded">Add Coupan</a>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <header class="card-header">
+            <div class="row align-items-center">
+                <!-- <div class="col col-check flex-grow-0">
+                    <div class="form-check ms-2">
+                        <input class="form-check-input" type="checkbox" value="">
+                    </div>
+                </div> -->
+                <!-- <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
+                    <select class="form-select">
+                        <option selected>All category</option>
+                        <option>Electronics</option>
+                        <option>Clothes</option>
+                        <option>Automobile</option>
+                    </select>
+                </div> -->
+                <!-- <div class="col-md-2 col-6">
+                    <input type="date" value="02.05.2021" class="form-control">
+                </div>
+                <div class="col-md-2 col-6">
+                    <select class="form-select">
+                        <option selected>Status</option>
+                        <option>Active</option>
+                        <option>Disabled</option>
+                        <option>Show all</option>
+                    </select>
+                </div> -->
+            </div>
+        </header> <!-- card-header end// -->
+        <div class="card-body">
+            <div class="table-responsive" id="example">
+              <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" -->
+                <table class="table table-hover" id="example">
+                  <thead>
+                    <tr>
+                        <!-- <th>No</th> -->
+                      <th>Coupan Code</th>
+                      <th>Coupan Name</th>
+                      <th>Max.Amount</th>
+                      <th>Min.Amount</th>
+                      <th>Expires on</th>
+                      <th>Discount %</th>
+                      <!-- <th class="text-end">Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% coupan.forEach(coupan=>{ %>
+        
+                    <tr>
+                      
+                   
+                        <td>
+                            <div class="info">
+                              <p class="mb-0 title"><%=coupan.coupanId %> </p>
+                            </div>
+                          </td>
+
+                      <td>
+                        <div class="info">
+                          <p class="mb-0 title"><%=coupan.coupanName %> </p>
+                        </div>
+                      </td>
+
+
+                      <td>
+                        <div class="info">
+                          <p class="mb-0 title"><%=coupan.max %> </p>
+                        </div>
+                      </td>
+                     
+                      <td>
+                        <div class="info">
+                          <p class="mb-0 title"><%=coupan.price %> </p>
+                        </div>
+                      </td>
+
+                      <td>
+                        <div class="info">
+                          <p class="mb-0 title"><%=coupan.expiryDate %> </p>
+                        </div>
+                      </td>
+
+
+                      <td>
+                        <div class="info">
+                          <p class="mb-0 title"><%=coupan.percentage %> </p>
+                        </div>
+                      </td>
+                     
+                      
+                      <!-- <td class="text-end">
+                        <a href="/admin/edit-product/" class="btn btn-sm btn-brand rounded font-sm mt-15"
+                          >Edit</a
+                        >
+                        <a href="/admin/delete-product/ " class="btn btn-sm btn-brand rounded font-sm mt-15" onclick="return confirm('Are you sure you want to delete ?');"
+                          >Delete</a
+                        >
+                      </td> -->
+                    </tr>
+        
+                    <% }) %>
+                  </tbody>
+                </table>
+                <!-- table-responsive.// -->
+              </div>
+
+
+            
+           
+        </div> <!-- card-body end// -->
+    </div> <!-- card end// -->
+    <div class="pagination-area mt-30 mb-50">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-start">
+             
+                <!-- <li class="page-item"><a class="page-link" href="/admin/products-list?page=3">03</a></li> -->
+                <!-- <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                <li class="page-item"><a class="page-link" href="#">16</a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li> -->
+            </ul>
+        </nav>
+    </div>
+</section> <!-- content-main end// -->

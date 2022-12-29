@@ -1,0 +1,135 @@
+<section class="pt-150 pb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 m-auto">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="dashboard-menu">
+              <ul class="nav flex-column" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link" href="/profile"
+                    ><i class="fi-rs-settings-sliders mr-10"></i>Dashboard</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="/profile/orders"
+                    ><i class="fi-rs-shopping-bag mr-10"></i>Orders</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="/profile/address" class="nav-link"
+                    ><i class="fi-rs-marker mr-10"></i>My Address</a
+                  >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile/edit"><i class="fi-rs-user mr-10"></i>Account details</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout"
+                    ><i class="fi-rs-sign-out mr-10"></i>Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="tab-content dashboard-content">
+              <div
+                class="tab-pane fade active show"
+                id="orders"
+                role="tabpanel"
+                aria-labelledby="orders-tab"
+              >
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="mb-0">Your Orders</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table" id="myDataTable">
+                        <thead>
+                          <tr>
+                            <!-- <th>No</th> -->
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Method</th>
+                            <th>Total</th>
+                            <th>Order Status</th>
+                            <!-- <th>Items</th> -->
+                            <th>Details</th>
+                            <!-- <th>Actions</th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% let i=1 %> <% orders.forEach(element=>{ %>
+                          <tr>
+                            <!-- <td>
+                              <div class="left">
+                                <p class="fs-5"><%=i %></p>
+                              </div>
+                            </td> -->
+                            <td><a href="#"></a><%=element._id%></td>
+                            <td><%=element.date.toDateString().slice(3)%></td>
+                            <td><%=element.paymentMethod %></td>
+                            <td>₹
+                              <%=element.totalAmount %>
+                            </td>
+                            <td>
+                              <span class="badge rounded-pill alert-success"
+                                ><%=element.status%></span
+                              >
+                            </td>
+                            <td>
+                              <a
+                                href="/order-products/<%=element._id%>"
+                                class="btn-small d-block"
+                                >View</a
+                              >
+                            </td>
+                            <!-- <td class="text-center">
+                              <a
+                                href="/delete-order/<%=element._id %> "
+                                class="text-muted"
+                                ><i class="fi-rs-trash"></i
+                              ></a>
+                            </td> -->
+                          </tr>
+                          <% i++}) %>
+                        </tbody>
+                      </table>
+
+
+                      <div class="pagination-area mt-15 mb-50">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-start">
+                                <!-- <li class="page-item active"><a class="page-link" href="/?page=1">01</a></li>
+                                <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                                <li class="page-item"><a class="page-link" href="#">16</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li> -->
+                
+                                <% for(let i=1;i<=pages;i++) { %> 
+                                    <% if(i==currentPage) {%> 
+                                      <li class="page-item active"><a class="page-link" href="/profile/orders?page=<%=i %>"><%=i %> </a></li>
+                                      <% } else { %> 
+                                        <li class="page-item"><a class="page-link" href="/profile/orders?page=<%=i %>"><%=i %> </a></li>
+                                        <% } %>   
+                                    <% } %> 
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+</section>

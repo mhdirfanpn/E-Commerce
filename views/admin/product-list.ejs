@@ -1,0 +1,181 @@
+
+
+
+<section class="content-main">
+    <div class="content-header">
+        <div>
+            <h2 class="content-title card-title">Products List</h2>
+            <!-- <p>Lorem ipsum dolor sit amet.</p> -->
+        </div>
+        <div>
+            <!-- <a href="#" class="btn btn-light rounded font-md">Export</a>
+            <a href="#" class="btn btn-light rounded  font-md">Import</a> -->
+            <a href="add-product" class="btn btn-primary btn-sm rounded">Add product</a>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <header class="card-header">
+            <div class="row align-items-center">
+                <!-- <div class="col col-check flex-grow-0">
+                    <div class="form-check ms-2">
+                        <input class="form-check-input" type="checkbox" value="">
+                    </div>
+                </div> -->
+                <!-- <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
+                    <select class="form-select">
+                        <option selected>All category</option>
+                        <option>Electronics</option>
+                        <option>Clothes</option>
+                        <option>Automobile</option>
+                    </select>
+                </div> -->
+                <!-- <div class="col-md-2 col-6">
+                    <input type="date" value="02.05.2021" class="form-control">
+                </div>
+                <div class="col-md-2 col-6">
+                    <select class="form-select">
+                        <option selected>Status</option>
+                        <option>Active</option>
+                        <option>Disabled</option>
+                        <option>Show all</option>
+                    </select>
+                </div> -->
+            </div>
+        </header> <!-- card-header end// -->
+        <div class="card-body">
+            <div class="table-responsive" id="example">
+              <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" -->
+                <table class="table table-hover" id="">
+                  <thead>
+                    <tr>
+                        <!-- <th>No</th> -->
+                      <th>Name</th>
+                      <th>Category</th>
+                      <th>Description</th>
+                      <th>Price</th>
+                      <th>Stock</th>
+                      <th>Registered</th>
+                      <th class="text-end">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% let i=1 %> 
+                    <% productDetails.forEach(product=>{ %>
+        
+                    <tr>
+                        <!-- <td width="10%">
+                            <a href="#" class="itemside">
+                              <div class="left">
+                                <p class="fs-5"><%=i %></p>
+                              </div>
+                            </a>
+                          </td> -->
+                      <td width="30%">
+                        <a href="#" class="itemside">
+                            <div class="left">
+                                <img style="width: 50px; height: 50px;" src="/productImages/<%=product._id %>0.jpg"  alt="" />
+                            </div>
+                          <div class="info pl-3 ">
+                            
+                            <h6 class="mb-0 title"><%=product.name %></h6>
+                          </div>
+                        </a>
+                      </td>
+
+                      <td>
+                        <div class="info">
+                          <p class="mb-0 title"><%=product.category %></p>
+                        </div>
+                      </td>
+
+
+                      <td>
+                        <div class="info">
+                          <p class="mb-0 title"><%=product.description %></p>
+                        </div>
+                      </td>
+  
+                      
+                      <td>
+                        <div class="info">
+                          <p class="mb-0 title">₹ <%=product.price %></p>
+                        </div>
+                      </td>
+
+                      <td>
+                        <div class="info">
+                          <p class="mb-0 title"><%=product.stock %></p>
+                        </div>
+                      </td>
+                     
+                      <td><%=product.date %></td>
+                      <td class="text-end">
+                        <a href="/admin/edit-product/<%=product._id %>" class="btn btn-sm btn-brand rounded font-sm mt-15"
+                          >Edit</a
+                        >
+                        <a href="/admin/delete-product/<%=product._id %> " class="btn btn-sm btn-brand rounded font-sm mt-15" onclick="return confirm('Are you sure you want to delete <%=product.name %>?');"
+                          >Delete</a
+                        >
+                      </td>
+                    </tr>
+        
+                    <% i++}) %>
+                  </tbody>
+                </table>
+                <script>
+                  function myFunction() {
+                    var input, filter, table, tr, td, i, txtValue;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+                    for (i = 0; i < tr.length; i++) {
+                      td = tr[i].getElementsByTagName("td")[0];
+                      if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                          tr[i].style.display = "";
+                        } else {
+                          tr[i].style.display = "none";
+                        }
+                      }       
+                    }
+                  }
+                  </script>
+                <!-- table-responsive.// -->
+              </div>
+
+
+            
+           
+        </div> <!-- card-body end// -->
+    </div> <!-- card end// -->
+    <div class="pagination-area mt-30 mb-50">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-start">
+              <% for(let i=1;i<=pages;i++) { %> 
+                <% if(i==currentPage) {%> 
+                  <li class="page-item active"><a class="page-link" href="/admin/products-list?page=<%=i %>"><%=i %> </a></li>
+                  <% } else { %> 
+                    <li class="page-item"><a class="page-link" href="/admin/products-list?page=<%=i %>"><%=i %> </a></li>
+                    <% } %>   
+                <% } %> 
+                <!-- <li class="page-item"><a class="page-link" href="/admin/products-list?page=3">03</a></li> -->
+                <!-- <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                <li class="page-item"><a class="page-link" href="#">16</a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li> -->
+            </ul>
+        </nav>
+    </div>
+</section> <!-- content-main end// -->
+
+<!-- <script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+</script> -->

@@ -1,0 +1,108 @@
+<section class="content-main">
+  <div class="content-header">
+    <h2 class="content-title">users list</h2>
+  
+  </div>
+  <div class="card mb-4">
+    <header class="card-header">
+     
+    </header>
+    <!-- card-header end// -->
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>User</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Registered</th>
+              <th class="text-end">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% let i=1 %> 
+            <% userDetails.forEach(user=>{ %>
+
+
+            <tr>
+              <td width="10%">
+                <a href="#" class="itemside">
+                  <div class="left">
+                    <p class="fs-5"><%=i %></p>
+                  </div>
+                </a>
+              </td>
+              <td width="20%">
+                <a href="#" class="itemside">
+                  <div class="info pl-3">
+                    <h6 class="mb-0 title"><%=user.name %></h6>
+                  </div>
+                </a>
+              </td>
+              <td>
+                <div class="info">
+                  <p class="mb-0 title"><%=user.email %></p>
+                </div>
+              </td>
+
+              <td>
+                <% if (user.isBlocked) { %>
+                <span class="badge rounded-pill alert-danger">Inactive</span>
+                <%} else { %>
+                <span class="badge rounded-pill alert-success">Active</span>
+                <% } %>
+              </td>
+
+              <td>08.07.2020</td>
+              <td class="text-end">
+                <% if (user.isBlocked) { %>
+                <a
+                  href="/admin/unblock-user/<%=user._id %> "
+                  class="btn btn-sm btn-brand rounded font-sm mt-15"
+                  onclick="return confirm('Are you sure you want to unblock <%=user.name %>?');"
+                  >Unblock</a
+                >
+                <%} else { %>
+                <a
+                  href="/admin/block-user/<%=user._id %> "
+                  class="btn btn-sm btn-brand rounded font-sm mt-15"
+                  onclick="return confirm('Are you sure you want to block <%=user.name %>?');"
+                  >Block</a
+                >
+                <% } %>
+              </td>
+            </tr>
+
+            <% i++}) %>
+          </tbody>
+        </table>
+        <!-- table-responsive.// -->
+      </div>
+    </div>
+    <!-- card-body end// -->
+  </div>
+  <!-- card end// -->
+  <div class="pagination-area mt-15 mb-50">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-start">
+            <!-- <li class="page-item active"><a class="page-link" href="/?page=1">01</a></li>
+            <li class="page-item"><a class="page-link" href="#">02</a></li>
+            <li class="page-item"><a class="page-link" href="#">03</a></li>
+            <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+            <li class="page-item"><a class="page-link" href="#">16</a></li>
+            <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li> -->
+
+            <% for(let i=1;i<=pages;i++) { %> 
+                <% if(i==currentPage) {%> 
+                  <li class="page-item active"><a class="page-link" href="/admin/order-list?page=<%=i %>"><%=i %> </a></li>
+                  <% } else { %> 
+                    <li class="page-item"><a class="page-link" href="/admin/order-list?page=<%=i %>"><%=i %> </a></li>
+                    <% } %>   
+                <% } %> 
+        </ul>
+    </nav>
+</div>
+</section>
+<!-- content-main end// -->

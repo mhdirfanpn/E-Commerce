@@ -1,0 +1,330 @@
+<section class=" d-flex ml-5">
+    <aside>
+        <div class="mt-50">
+            <form action="/admin/sales-rep-mon" method="post">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="content-header">
+                            <div class="row-1 display-block">
+                                <div class="col">
+                                    <div class="reoprt-monthly">
+
+                                        <label for="monthly"> <h4><strong>Sales Report Monthly</strong></h4></label>
+                                        <select name="month" class="form-select mt-15" aria-label="Default select example" onchange="report()">
+                                            <option >Select Month</option>
+                                            <option value="01">January</option>
+                                            <option value="02">February</option>
+                                            <option value="03">March</option>
+                                            <option value="04">April</option>
+                                            <option value="05">May</option>
+                                            <option value="06">Hune</option>
+                                            <option value="07">July</option>
+                                            <option value="08">August</option>
+                                            <option value="09">Septembr</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                        </select>
+                                        <button class="btn btn-primary mt-15" style="width:150px ;" id="monthButton" type="submit">VIEW</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="mt-30">
+            <form action="/admin/sales-rep-daily" method="post">
+                <label for="daily"><h4><strong>Sales Report Date Wise</strong></h4></label><br>
+                <div class="row mt-15">
+                    <div class="col">
+
+                        <label for="startDate">Start Date</label><br>
+                        <input type="date" id="startDate" name="start" ><br>
+                        <label for="endDate" class="mt-15">End Date</label><br>
+                        <input type="date" id="endDate" name="end">
+                    </div><br>
+                    <div class="mt-15">
+                        <button class="btn btn-primary" style="width:150px ;" onclick="report()">VIEW</button>
+                    </div><br>
+
+
+                </div>
+
+            </form>
+        </div>
+         <div class="mt-30">
+            <form action="/admin/sales-rep-yearly" method="post">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="content-header">
+                            <div class="row-1 display-block">
+                                <div class="col">
+                                    <div class="reoprt-yearly mt-15">
+
+                                        <label for="yearly"><h4><strong>Sales Report Yearly</strong></h4></label>
+                                        <select name="year" class="form-select mt-15" aria-label="Default select example" onchange="report()">
+                                            <option >Select Year</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2019">2019</option>
+                                        </select>
+                                        <button class="btn btn-primary mt-15" style="width:150px ;" id="yearButton" type="submit">VIEW</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </aside>
+
+
+    <div class="report" id="sales_report" style=" width:650px;">
+
+        <%if(result){%>
+
+    
+         <div class="card ">
+             <div class="card-body">
+                 <%if(monthly){%>
+                 <h4 class=" header-title  text-center">Sales Report - 
+                    <%if(mon=='12'){%>
+                        December
+                        <% } %> 
+                        <%if(mon=='11'){%>
+                            November
+                            <% } %>  
+                            <%if(mon=='10'){%>
+                                October
+                                <% } %> 
+                                <%if(mon=='09'){%>
+                                    September
+                                    <% } %>   
+                                       <%if(mon=='08'){%>
+                                        August
+                                        <% } %> 
+                                        <%if(mon=='07'){%>
+                                            July
+                                            <% } %>  
+                                            <%if(mon=='06'){%>
+                                                June
+                                                <% } %> 
+                                                <%if(mon=='05'){%>
+                                                    May
+                                                    <% } %>  
+                                                    <%if(mon=='04'){%>
+                                                        April
+                                                        <% } %> 
+                                                        <%if(mon=='03'){%>
+                                                            March
+                                                            <% } %>   
+                                                               <%if(mon=='02'){%>
+                                                                February
+                                                                <% } %> 
+                                                                <%if(mon=='01'){%>
+                                                                    January
+                                                                    <% } %>
+                     <!-- <em class="mb-1 card-title"> {{#case '12'}} December {{/case}}
+                         {{#case '11'}} November {{/case}}
+                         {{#case '10'}} October {{/case}}
+                         {{#case '09'}} September {{/case}}
+                         {{#case '08'}} August {{/case}}
+                         {{#case '07'}} July {{/case}}
+                         {{#case '06'}} June {{/case}}
+                         {{#case '05'}} May {{/case}}
+                         {{#case '04'}} April {{/case}}
+                         {{#case '03'}} March {{/case}}
+                         {{#case '02'}} February {{/case}}
+                         {{#case '01'}} January {{/case}}
+                     </em>
+                     {{/switch}} -->
+                 </h4>
+                <% } %> 
+                 <%if(date){%>
+                 <h4 class=" header-title  text-center">Sales Report for <%=startDate %> 
+
+                    <%if(startMon=='12'){%>
+                        December
+                        <% } %> 
+
+                        <%if(startMon=='11'){%>
+                            November
+                            <% } %> 
+                            <%if(startMon=='10'){%>
+                                October
+                                <% } %> 
+                                <%if(startMon=='09'){%>
+                                    September
+                                    <% } %>   
+                                       <%if(startMon=='08'){%>
+                                        August
+                                        <% } %> 
+                                        <%if(startMon=='07'){%>
+                                            July
+                                            <% } %>  
+                                            <%if(startMon=='06'){%>
+                                                June
+                                                <% } %> 
+                                                <%if(startMon=='05'){%>
+                                                    May
+                                                    <% } %>  
+                                                    <%if(startMon=='04'){%>
+                                                        April
+                                                        <% } %> 
+                                                        <%if(startMon=='03'){%>
+                                                            March
+                                                            <% } %>   
+                                                               <%if(startMon=='02'){%>
+                                                                February
+                                                                <% } %> 
+                                                                <%if(startMon=='01'){%>
+                                                                    January
+                                                                    <% } %>
+                        
+                     <!-- {{#switch startMon}}
+                     <em class="mb-1 card-title"> {{#case '12'}} December {{/case}}
+                         {{#case '11'}} November {{/case}}
+                         {{#case '10'}} October {{/case}}
+                         {{#case '09'}} September {{/case}}
+                         {{#case '08'}} August {{/case}}
+                         {{#case '07'}} July {{/case}}
+                         {{#case '06'}} June {{/case}}
+                         {{#case '05'}} May {{/case}}
+                         {{#case '04'}} April {{/case}}
+                         {{#case '03'}} March {{/case}}
+                         {{#case '02'}} February {{/case}}
+                         {{#case '01'}} January {{/case}}
+                     </em>
+                     {{/switch}}  -->
+                     to 
+                     <%=endDate %> 
+                     <!-- {{endDate}} 
+                     {{#switch endMon}} -->
+                     
+                    <%if(endMon=='12'){%>
+                        December
+                        <% } %> 
+                        <%if(endMon=='11'){%>
+                            November
+                            <% } %> 
+                            <%if(endMon=='10'){%>
+                                October
+                                <% } %> 
+                                <%if(endMon=='09'){%>
+                                    September
+                                    <% } %>   
+                                       <%if(endMon=='08'){%>
+                                        August
+                                        <% } %> 
+                                        <%if(endMon=='07'){%>
+                                            July
+                                            <% } %>  
+                                            <%if(endMon=='06'){%>
+                                                June
+                                                <% } %> 
+                                                <%if(endMon=='05'){%>
+                                                    May
+                                                    <% } %>  
+                                                    <%if(endMon=='04'){%>
+                                                        April
+                                                        <% } %> 
+                                                        <%if(endMon=='03'){%>
+                                                            March
+                                                            <% } %>   
+                                                               <%if(endMon=='02'){%>
+                                                                February
+                                                                <% } %> 
+                                                                <%if(endMon=='01'){%>
+                                                                    January
+                                                                    <% } %>
+                     <!-- <em class="mb-1 card-title"> {{#case '12'}} December {{/case}}
+                         {{#case '11'}} November {{/case}}
+                         {{#case '10'}} October {{/case}}
+                         {{#case '09'}} September {{/case}}
+                         {{#case '08'}} August {{/case}}
+                         {{#case '07'}} July {{/case}}
+                         {{#case '06'}} June {{/case}}
+                         {{#case '05'}} May {{/case}}
+                         {{#case '04'}} April {{/case}}
+                         {{#case '03'}} March {{/case}}
+                         {{#case '02'}} February {{/case}}
+                         {{#case '01'}} January {{/case}}
+                     </em>
+                     {{/switch}} -->
+                 </h4>
+                 <% } %>
+
+                 <%if(year){%>
+                 <h4 class=" header-title  text-center">Sales Report -
+                     <em class="mb-1 card-title"><%=year %>   </em>
+                 </h4>
+                 <% } %>
+                 <table class="table" id="myTable">
+                     <thead>
+                         <tr>
+                             <!-- <th scope="col">Sl. No</th> -->
+                             <th scope="col">Category</th>
+                             <th scope="col">Total Amount</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                        <% result.forEach(result=>{ %>
+
+                         <tr>
+ 
+                             <!-- <td scope="row">{{counter @index}}</td> -->
+                             <td id="cattd"><%=result._id %> </td>
+                             <td id="totaltd"><%=result.totalAmount %> </td>
+ 
+                         </tr>
+                         <% }) %> 
+                     </tbody>
+                 </table>
+             </div>
+         </div>
+ 
+         <% } %> 
+     </div> <!-- end row -->
+ 
+ 
+ 
+ </section>
+ 
+ 
+ 
+ 
+ 
+ </section>
+ 
+ <script>
+
+$(document).ready(function() {
+    $('#myTable').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'excel', 'pdf'
+        ]
+    } );
+
+} );
+
+
+     var count = 0
+    // document.getElementById("sales_report").hidden = true
+     
+     
+     function report() {
+         count++;
+         
+         var start = document.getElementById("startDate").value
+         var end = document.getElementById("endDate").value
+         console.log('this is date ',start,end)
+         
+     }
+ </script>
+
+

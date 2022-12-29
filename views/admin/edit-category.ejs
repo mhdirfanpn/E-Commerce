@@ -1,0 +1,66 @@
+<section class="content-main">
+  <div class="content-header">
+    <div>
+      <h2 class="content-title card-title">Categories</h2>
+    </div>
+  
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-3">
+          <form
+            action="/admin/edit-category/<%=category._id %>"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="mb-4">
+              <label for="product_name" class="form-label">Category Name</label>
+              <input
+                required
+                name="name"
+                type="text"
+                placeholder="Enter category"
+                class="form-control"
+                id="product_name"
+                value="<%=category.name %>"
+              />
+            </div>
+            <div class="mb-4">
+              <label for="product_slug" class="form-label">Media</label>
+              <div class="input-upload">
+                <img
+                  src="/category-images/<%=category._id %>.jpg"
+                  style="width: 100px; height: auto"
+                  id="imageView"
+                />
+                <input
+                  name="categoryImage"
+                  multiple
+                  class="form-control"
+                  type="file"
+                  onchange="viewImage(event)"
+                />
+              </div>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">
+                Update category
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-9">
+          <!-- table-responsive.// -->
+          <script>
+            function viewImage(event) {
+              document.getElementById("imageView").src = URL.createObjectURL(
+                event.target.files[0]
+              );
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

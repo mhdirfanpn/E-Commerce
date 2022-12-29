@@ -1,0 +1,231 @@
+<section class="pt-100 pb-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 m-auto">
+          <div class="row">
+           
+            <div class="col-md-8">
+              <div class="tab-content dashboard-content">
+                <div class="tab-pane fade active show" id="address" role="tabpanel" aria-labelledby="address-tab">
+                  <div class="row">
+                    
+  
+                
+                  <div class="row mx-1 mt-2">
+                    <div class="">
+                      <span><i class="fi-rs-user mr-10"></i> <a data-bs-toggle="collapse" class="collapsed" aria-expanded="false">Edit address</a></span>
+                    </div>
+                    <div class="" id="newAddress">
+                      <div class="panel-body">
+                        <form id="submit-form" action="/edit-address" method="post">
+                          <div class="form-group">
+                            <input required="" type="text" name="name" placeholder="Full name *" onchange="" value="<%=response[0].name %>" onkeyup=" validateName()" id="contact-name" onclick="validateName()">
+                            <span id="name-error" style="color: red;"></span>
+                          </div>
+                          <div class="form-group">
+                            <input required="" type="text" name="addressLine" placeholder="Address *" value="<%=response[0].addressLine %>" id="addres" onkeyup="validateAddress()" onclick="validateAddress()" >
+                            <span id="address-error" style="color: red;"></span>
+                          </div>
+                          <div class="form-group">
+                            <input required="" type="text" name="city" placeholder="City / Town *" value="<%=response[0].city %>" id="city" onkeyup="validateCity()" onclick="validateCity()">
+                            <span id="city-error" style="color: red;"></span>
+                          </div>
+                          <div class="form-group">
+                            <input required="" type="text" name="state" placeholder="State / County *" value="<%=response[0].state %>"  id="state" onkeyup="validateState()" onclick="validateState()">
+                            <span id="state-error" style="color: red;"></span>
+                          </div>
+                          <div class="form-group">
+                            <input required="" id="pin" type="text" name="zipCode" placeholder="Postcode / ZIP *" onchange="" value="<%=response[0].zipCode %>"  onkeyup=" validatepin()" onclick="validatepin()">
+                            <span id="pin-error" class="mt-2 text-danger" style="color: red;"></span>
+                          </div>
+                          <div class="form-group">
+                            <input required="" id="contact-phonenumber" type="text" name="phone" placeholder="Phone *" onchange="" value="<%=response[0].phone %>"  onkeyup=" validatePhoneNumber()" onclick=" validatePhoneNumber()">
+                            <span id="number-error" style="color: red;"></span>
+                          </div>
+                          <div class="form-group">
+                            <input required="" id="contact-email" type="text" name="email" placeholder="Email address *" onchange="" value="<%=response[0].email %>" onkeyup=" validateEmail()" onclick="validateEmail()">
+                            <span id="email-error" style="color: red;"></span>
+                          </div>
+                          <input type="text" value="<%=response[0]._id %> " name="addressId" hidden />
+                          <div class="form-group">
+                            <button type="submit"  onclick="validateForm()" class="btn btn-outline btn-lg btn-brand-outline font-weight-bold text-brand bg-white text-hover-white border-radius-5 btn-shadow-brand hover-up" id="contact-submit" name="">Edit address</button>
+                            <div id="submit-error" style="color: red;"></div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    var firstNameError = document.getElementById("name-error");
+    var emailError = document.getElementById("email-error")
+    var submitError = document.getElementById("submit-error");
+    var  phoneNumberError = document.getElementById("number-error")
+    var pinError=document.getElementById("pin-error")
+    var addressError=document.getElementById("address-error")
+    var cityError=document.getElementById("city-error")
+    var stateError=document.getElementById("state-error")
+    
+    
+    
+    
+    function validateName(){
+        var fname = document.getElementById("contact-name").value;
+    
+        if(fname.length ==0){
+            firstNameError.innerHTML ='this field is required';
+            return false;
+        }
+        if(!fname.match(/(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)/)){
+    
+            firstNameError.innerHTML = 'Invalid name';
+            return false;
+        }
+        else{
+        firstNameError.innerHTML = '' ;
+        return true ;
+        }
+    }
+    
+    
+    function validateEmail(){
+        var email = document.getElementById("contact-email").value;
+        if(email == "" || email == null){
+            emailError.innerHTML="this field required";
+            return false;
+        }
+        if(!email.match(/^[a-zA-Z0-9.!#$%&’+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/)){
+    
+            emailError.innerHTML = 'Email Invalid';
+            return false;
+    
+        }
+        emailError.innerHTML="";
+        return true;
+    }
+    
+  
+    
+    
+    function validatePhoneNumber(){
+  
+        var phoneNumber = document.getElementById("contact-phonenumber").value;
+  
+        if(phoneNumber.length==0){
+          phoneNumberError.innerHTML="this field is required";
+            return false;
+        }
+        if(phoneNumber.length<10){
+            phoneNumberError.innerHTML="Enter 10 digit mobile number";
+            return false;
+        }
+        if(phoneNumber.length>10){
+            phoneNumberError.innerHTML="Enter 10 digit mobile number";
+            return false;
+        }
+        phoneNumberError.innerHTML="";
+        return true;
+    }
+  
+    function validatepin(){
+      var pinNumber = document.getElementById("pin").value;
+  
+      if(pinNumber.length==0){
+          pinError.innerHTML="this field is required";
+            return false;
+        }
+        if(pinNumber.length<6){
+            pinError.innerHTML="Enter 6 digit pin";
+            return false;
+        }
+        if(pinNumber.length>6){
+            pinError.innerHTML="Enter 6 digit pin";
+            return false;
+        }
+        pinError.innerHTML="";
+        return true;
+    }
+  
+    function validateAddress(){
+        var address = document.getElementById("addres").value;
+    
+        if(address.length ==0){
+          addressError.innerHTML ='this field is required';
+            return false;
+        }
+        if(address.match(/^[!#$%&’+/=?^_`{|}~-]+(?:\.+)$/)){
+    
+          addressError.innerHTML = 'Invalid address';
+            return false;
+        }
+        else{
+          addressError.innerHTML = '' ;
+        return true ;
+        }
+    }
+  
+    function validateCity(){
+        var town = document.getElementById("city").value;
+    
+        if(town.length==0){
+          cityError.innerHTML="this field is required";
+            return false;
+        }
+        if(town.match(/^[!#$%&’+/=?^_`{|}~-]+(?:\.+)$/)){
+    
+          cityError.innerHTML = 'Invalid input';
+            return false;
+        }
+        else{
+          cityError.innerHTML = '' ;
+        return true ;
+        }
+    }
+  
+  
+    function validateState(){
+        var state = document.getElementById("state").value;
+    
+        if(state.length==0){
+          stateError.innerHTML="this field is required";
+            return false;
+        }
+        if(state.match(/^[!#$%&’+/=?^_`{|}~-]+(?:\.+)$/)){
+    
+          stateError.innerHTML = 'Invalid input';
+            return false;
+        }
+        else{
+          stateError.innerHTML = '' ;
+        return true ;
+        }
+    }
+  
+    document.getElementById("submit-form").addEventListener(
+     "submit",
+     function (e) {
+        e.preventDefault();
+     },
+     false
+  );
+     
+    
+    
+    function validateForm(){
+        if(!validateName()  && !validateEmail() &&  !validatePhoneNumber()  && !validatepin() && !validateAddress() && !validateCity() && !validateState()){
+  
+            submitError.innerHTML = 'Please fill the fields to submit';
+            setTimeout(function(){submitError.style.display = 'none';} , 4000)
+            return false;
+        }
+    
+    }
+    </script>

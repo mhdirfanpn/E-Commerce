@@ -1,0 +1,76 @@
+<section class="pt-150 pb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 m-auto">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="dashboard-menu">
+              <ul class="nav flex-column" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/profile"
+                    ><i class="fi-rs-settings-sliders mr-10"></i>Dashboard</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/profile/orders"
+                    ><i class="fi-rs-shopping-bag mr-10"></i>Orders</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="/profile/address" class="nav-link"
+                    ><i class="fi-rs-marker mr-10"></i>My Address</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/profile/edit"
+                    ><i class="fi-rs-user mr-10"></i>Account details</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout"
+                    ><i class="fi-rs-sign-out mr-10"></i>Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="tab-content dashboard-content">
+              <div
+                class="tab-pane fade active show"
+                id="dashboard"
+                role="tabpanel"
+                aria-labelledby="dashboard-tab"
+              >
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="mb-0">Hello <%=user.name %></h5>
+                  </div>
+                  <div class="card-body">
+                    <p>
+                      From your account dashboard. you can easily check &amp;
+                      view your <a href="/profile/orders">recent orders</a>,
+                      manage your <a href="/profile/address">addresses</a> and
+                      <a href="/profile/edit"
+                        >edit your password and account details.</a
+                      >
+                    </p>
+                  </div>
+                </div>
+
+                <div id="" class="col-lg-6 mb-4 mt-30">
+                  <div class="card mb-3 mb-lg-0">
+                    <div class="card-header">
+                      <h5 class="mb-0">Wallet</h5>
+                    </div>
+                    <div class="card-body"><h3 class="font-xl text-brand fw-900">₹<%=user.wallet %></h3></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
