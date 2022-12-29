@@ -254,10 +254,9 @@ const productForm = () => {
   });
 };
 
-const userOrders = (pageNum, docCount, perPage) => {
+const userOrders = (pageNum,perPage) => {
   return new Promise(async (resolve, reject) => {
     let docCount;
-
     await db.order
       .find()
       .sort({ $natural: -1 })

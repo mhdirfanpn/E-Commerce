@@ -270,10 +270,9 @@ const getCategory = (req, res) => {
 
 const userOrders = (req, res) => {
   try {
-    let docCount;
     const perPage = 10;
     const pageNum = req.query.page;
-    adminHelpers.userOrders(pageNum, docCount, perPage).then((order) => {
+    adminHelpers.userOrders(pageNum,perPage).then((order) => {
       res.render("admin/order", {
         order,
         layout: "admin-layout",
