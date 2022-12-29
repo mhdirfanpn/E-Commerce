@@ -18,17 +18,18 @@ const adminLogin = (adminData) => {
 
 const userList = () => {
   return new Promise(async (resolve, reject) => {
+    console.log("fabnuz");
 
     await db.users
       .find()
-
-      })
       .then((response) => {
+        console.log(response);
         resolve(response);
       })
       .catch((err) => {
         reject(err);
       });
+    })
 };
 
 const productList = (pageNum, docCount, perPage) => {

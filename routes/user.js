@@ -9,8 +9,8 @@ const swal = require("sweetalert");
 
 const verifyLogin = async(req, res, next) => {
   let user=req.session.user
-  userHelpers.findUser(user).then((users)=>{
-    if (users) {
+  userHelpers.findUser(user).then((userData)=>{
+    if (userData) {
       next();
     } else {
 
