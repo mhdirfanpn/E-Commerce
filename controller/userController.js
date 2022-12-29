@@ -531,14 +531,8 @@ const userProfile = async (req, res) => {
 
 const profileOrders = async (req, res) => {
   try {
-    let docCount;
-    const perPage = 5;
-    const pageNum = req?.query?.page;
     let orders = await userHelpers.getUserOrders(
       req.session.user,
-      pageNum,
-      docCount,
-      perPage
     );
     let wishlistCount = await userHelpers.wishlistCount(req.session.user._id);
     cartCount = await userHelpers.getCartCount(req.session.user._id);
@@ -546,9 +540,7 @@ const profileOrders = async (req, res) => {
       wishlistCount,
       orders,
       user: req.session.user,
-      currentPage: pageNum,
-      totalDocuments: orders.docCount,
-      pages: Math.round(orders.docCount / perPage),
+ 
     });
   } catch (error) {
     console.log(error);

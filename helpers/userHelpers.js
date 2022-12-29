@@ -558,15 +558,6 @@ const getUserOrders = (user, pageNum, docCount, perPage) => {
     await db.order
       .find({ user: user._id })
       .sort({ $natural: -1 })
-      .countDocuments()
-      .then((documents) => {
-        docCount = documents;
-        return db.order
-          .find({ user: user._id })
-          .sort({ $natural: -1 })
-          .skip((pageNum - 1) * perPage)
-          .limit(perPage);
-      })
       .then((orders) => {
         orders.docCount = docCount;
         resolve(orders);
