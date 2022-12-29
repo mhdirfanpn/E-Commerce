@@ -99,16 +99,16 @@ const updateCategory = (req, res) => {
 
 const userList = (req, res) => {
   try {
-    let docCount;
-    const perPage = 10;
-    const pageNum = req.query.page;
-    adminHelpers.userList(pageNum, docCount, perPage).then((userDetails) => {
+    // let docCount;
+    // const perPage = 10;
+    // const pageNum = req.query.page;
+    adminHelpers.userList().then((userDetails) => {
       res.render("admin/user-list", {
         layout: "admin-layout",
-        userDetails,
-        currentPage: pageNum,
-        totalDocuments: userDetails.docCount,
-        pages: Math.ceil(userDetails.docCount / perPage),
+        // userDetails,
+        // currentPage: pageNum,
+        // totalDocuments: userDetails.docCount,
+        // pages: Math.ceil(userDetails.docCount / perPage),
       });
     });
   } catch (error) {
