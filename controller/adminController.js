@@ -118,7 +118,7 @@ const userList = (req, res) => {
 };
 
 const productList = async (req, res) => {
-  try {
+  
     let docCount;
     const perPage = 10;
     const pageNum = req.query.page;
@@ -134,10 +134,6 @@ const productList = async (req, res) => {
       totalDocuments: productDetails.docCount,
       pages: Math.ceil(productDetails.docCount / perPage),
     });
-  } catch (error) {
-    console.log(error);
-    res.render("admin/error",{layout: "admin-layout"})
-  }
 };
 
 const productForm = (req, res) => {
