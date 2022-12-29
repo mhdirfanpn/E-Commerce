@@ -15,7 +15,7 @@
       <div class="row order-wrap mx-auto">
         <div class="text-end mb-60">
           <a href="/profile/orders" class="btn btn-outline btn-lg btn-brand-outline font-weight-bold text-brand bg-white text-hover-white border-radius-5 btn-shadow-brand hover-up">Back to all orders</a>
-          <a href="#" onclick="invoice('<%=Products?.length %>','<%=orders?.deliveryDetails[0]?.address %>','<%=orders?._id %>')" class="btn ms-2">Download invoice</a>
+          <a href="#" onclick="invoice('<%=products?.length %>','<%=orders?.deliveryDetails[0]?.address %>','<%=orders?._id %>')" class="btn ms-2">Download invoice</a>
         </div>
 
       </div>
@@ -72,7 +72,7 @@
 
 
                 <% let i=0 %> 
-                <% Products?.forEach(element=>{ %>
+                <% products?.forEach(element=>{ %>
                 <tr class="63688c9f9664c015d6575bf0-tr">
                   <td class="image product-thumbnail">
                         <img src="/productImages/<%=element?.Products?._id %>0.jpg"  alt="#">

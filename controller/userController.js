@@ -503,6 +503,7 @@ const getOrderProducts = async (req, res) => {
     let products = await userHelpers.getOrderProducts(req.params.id);
     let orders = await db.order.findOne({ _id: req.params.id });
     let total = await userHelpers.getTotalAmount(req.session.user._id);
+    console.log(products[0].Products);
     res.render("user/order-products", {
       user: req.session.user,
       products,
