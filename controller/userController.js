@@ -270,12 +270,10 @@ const getCartDetails = async (req, res) => {
   try {
     let user = req.session.user;
     let cartCount = null;
-    if (user) {
       cartCount = await userHelpers.getCartCount(user._id);
       wishlistCount = await userHelpers.wishlistCount(user._id);
-    }
+    
     let product = await userHelpers.getCartProducts(user);
-    console.log(product);
     let total = await userHelpers.getTotalAmount(user._id);
     if (total) {
       res.render("user/cart", {
