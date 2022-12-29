@@ -42,7 +42,6 @@ const userList = (pageNum, docCount, perPage) => {
 };
 
 const productList = (pageNum, docCount, perPage) => {
-  console.log(pageNum,'7777777777777');
   return new Promise(async (resolve, reject) => {
     let docCount;
 
