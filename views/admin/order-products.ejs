@@ -121,28 +121,28 @@
                     <a class="itemside" href="#">
                       <div class="left">
                         <img
-                          src="/productImages/<%=element?.product?._id %>0.jpg"
+                          src="/productImages/<%=element?.Product?._id %>0.jpg"
                           width="40"
                           height="40"
                           class="img-xs"
                           alt="Item"
                         />
                       </div>
-                      <div class="info"><%=element?.product?.name %></div>
+                      <div class="info"><%=element?.Product?.name %></div>
                     </a>
                   </td>
-                  <td>₹ <%=element?.product?.price %></td>
+                  <td>₹ <%=element?.Product?.price %></td>
                   <td><%=element?.quantity %></td>
 
                   <td >
-                    <%= element?.product?.price* element?.quantity %>
+                    <%= element?.Product?.price* element?.quantity %>
                   </td>
                   <td> 
                     <% if(element?.status=="placed" || element?.status=="Shipped"){ %> 
                     <select
                     class="form-select d-inline-block mb-lg-0 mb-15 mw-200"
-                    id="<%= element?.product?._id%>"
-                    onchange="status('<%=this %>',' <%= element?._id %>','<%= element?.product?._id%>')"
+                    id="<%= element?.Product?._id%>"
+                    onchange="status('<%=this %>',' <%= element?._id %>','<%= element?.Product?._id%>')"
                   >
                   <option value="<%=element?.status %>" selected><%=element?.status %></option>
                   <% if(element?.status!="Shipped"){ %>
@@ -163,7 +163,7 @@
                     <h5><b style="color:rgb(3, 169, 0) ;">refunded</b></h5>
                     <% } %>
                   <% if(element?.status=="return" && element?.status!="refunded"){ %> 
-                    <a onclick="ret(' <%= element?._id %>','<%= element?.product?._id%>',' <%= orderDetails?.user %>','<%=element?.product?.price %>','<%=element?.quantity %>')" style="color: green;">approve refund</a>
+                    <a onclick="ret(' <%= element?._id %>','<%= element?.Product?._id%>',' <%= orderDetails?.user %>','<%=element?.Product?.price %>','<%=element?.quantity %>')" style="color: green;">approve refund</a>
                     <!-- <h5><b style="color:rgb(3, 169, 0) ;">Delivered</b></h5> -->
                     <% } %>
                 
