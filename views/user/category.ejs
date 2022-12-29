@@ -16,7 +16,7 @@
             aria-controls="tab-one"
             aria-selected="true"
           >
-            <%=cat[0].category %>
+            <%=cat[0]?.category %>
           </button>
         </li>
       </ul>
@@ -30,16 +30,16 @@
         aria-labelledby="tab-one"
       >
         <div class="row product-grid-4">
-          <% cat.forEach(element=>{ %>
+          <% cat?.forEach(element=>{ %>
 
           <div class="col-lg-3 col-md-4 col-12 col-sm-6">
             <div class="product-cart-wrap mb-30">
               <div class="product-img-action-wrap">
                 <div class="product-img product-img-zoom">
-                  <a href="/product/<%=element._id %>">
+                  <a href="/product/<%=element?._id %>">
                     <img
                       class="default-img"
-                      src="/productImages/<%=element._id %>0.jpg"
+                      src="/productImages/<%=element?._id %>0.jpg"
                       alt=""
                     />
                     <!-- <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt=""> -->
@@ -51,17 +51,17 @@
                   <a href="shop-grid-right.html">Clothing</a>
                 </div>
                 <h2>
-                  <a href="shop-product-right.html"><%=element.name %></a>
+                  <a href="shop-product-right.html"><%=element?.name %></a>
                 </h2>
               
 
 
                 <div class="product-price">
-                  <% if(element.categoryDiscount) { %> 
-                  <p><s>₹<%=element.Oprice %></s></p>
+                  <% if(element?.categoryDiscount) { %> 
+                  <p><s>₹<%=element?.Oprice %></s></p>
                   <% } %>  
                   <div>
-                    <span>₹<%=element.price %></span>
+                    <span>₹<%=element?.price %></span>
                   </div>
                   
               
@@ -72,10 +72,10 @@
                   <a
                     aria-label="Add To Wishlist"
                     class="action-btn hover-up"
-                    onclick="addToWishlist('<%=element._id %>')"
+                    onclick="addToWishlist('<%=element?._id %>')"
                     ><i class="fi-rs-heart"></i
                   ></a>
-                  <!-- <a aria-label="Add To Cart" class="action-btn hover-up" onclick="addToCart('<%=element._id %>')" ><i class="fi-rs-shopping-bag-add"></i></a>
+                  <!-- <a aria-label="Add To Cart" class="action-btn hover-up" onclick="addToCart('<%=element?._id %>')" ><i class="fi-rs-shopping-bag-add"></i></a>
                                             <p id="limitedstock" style="color: red;"></p> -->
                 </div>
                <% } %> 

@@ -76,7 +76,7 @@
               </thead>
               <tbody>
                 <% let i=1 %> 
-                <% categoryDetails.forEach(category=>{ %>
+                <% categoryDetails?.forEach(category=>{ %>
               
     
                 <tr>
@@ -93,18 +93,18 @@
 
                       <a href="#" class="itemside">
                         <div class="left">
-                            <img style="width: 50px; height: 50px;" src="/category-images/<%=category._id %>.jpg"  alt="" />
+                            <img style="width: 50px; height: 50px;" src="/category-images/<%=category?._id %>.jpg"  alt="" />
                         </div>
                       <div class="info pl-3 ">
                         
-                        <h6 class="mb-0 title"><%=category.name %></h6>
+                        <h6 class="mb-0 title"><%=category?.name %></h6>
                       </div>
                     </a>
                     </a>
                   </td>
                   <!-- <td>
                     <div class="info">
-                      <p class="mb-0 title"><#%=category.description %> </p>
+                      <p class="mb-0 title"><#%=category?.description %> </p>
                     </div>
                   </td> -->
                  
@@ -116,10 +116,10 @@
                  
                   <td>08.07.2020</td> -->
                   <td class="">
-                    <!-- <a href="/admin/edit-category/<%=category._id %> " class="btn btn-sm btn-brand rounded font-sm mt-15"
+                    <!-- <a href="/admin/edit-category/<%=category?._id %> " class="btn btn-sm btn-brand rounded font-sm mt-15"
                       >Edit</a
                     > -->
-                    <a href="/admin/delete-category/<%=category._id %> " class="btn btn-sm btn-brand rounded font-sm mt-15" onclick="return confirm('Are you sure you want to delete <%=category.name %>?');"
+                    <a href="/admin/delete-category/<%=category?._id %> " class="btn btn-sm btn-brand rounded font-sm mt-15" onclick="return confirm('Are you sure you want to delete <%=category?.name %>?');"
                       >Delete</a
                     >
                   </td>

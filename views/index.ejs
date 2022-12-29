@@ -1,7 +1,7 @@
 <main class="main">
   <section class="home-slider position-relative pt-50">
     <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
-      <% i=0 %> <% banner.forEach(banner=>{ %>
+      <% i=0 %> <% banner?.forEach(banner=>{ %>
 
       <div class="single-hero-slider single-animation-wrap">
         <div class="container">
@@ -10,12 +10,12 @@
               <div class="hero-slider-content-2">
                 <h2 class="animated fw-900">Supper value deals</h2>
                 <h1 class="animated fw-900 text-brand">
-                  On all <%=banner.name %>'s <%=banner?.description %>
+                  On all <%=banner?.name %>'s <%=banner?.description %>
                 </h1>
 
                 <a
                   class="animated btn btn-brush btn-brush-3"
-                  href="/category/<%=proId[i]._id%>"
+                  href="/category/<%=proId[i]?._id%>"
                 >
                   Shop Now
                 </a>
@@ -23,10 +23,10 @@
             </div>
             <div class="col-lg-7 col-md-6">
               <div class="single-slider-img single-slider-img-1">
-                <!-- <h1><%=banner._id %> </h1> -->
+                <!-- <h1><%=banner?._id %> </h1> -->
                 <img
                   class="animated slider-1-1"
-                  src="/addBanner/<%=banner._id %>.jpg"
+                  src="/addBanner/<%=banner?._id %>.jpg"
                   alt="banner image"
                 />
               </div>
@@ -70,7 +70,7 @@
           aria-labelledby="tab-one"
         >
           <div class="row product-grid-4">
-            <% productArray.forEach(element=>{ %>
+            <% productArray?.forEach(element=>{ %>
             <div class="col-lg-3 col-md-4 col-12 col-sm-6">
               <div class="product-cart-wrap mb-30">
                 <div class="product-img-action-wrap">

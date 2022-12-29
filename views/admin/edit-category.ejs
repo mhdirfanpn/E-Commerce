@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-md-3">
           <form
-            action="/admin/edit-category/<%=category._id %>"
+            action="/admin/edit-category/<%=category?._id %>"
             method="POST"
             enctype="multipart/form-data"
           >
@@ -23,14 +23,14 @@
                 placeholder="Enter category"
                 class="form-control"
                 id="product_name"
-                value="<%=category.name %>"
+                value="<%=category?.name %>"
               />
             </div>
             <div class="mb-4">
               <label for="product_slug" class="form-label">Media</label>
               <div class="input-upload">
                 <img
-                  src="/category-images/<%=category._id %>.jpg"
+                  src="/category-images/<%=category?._id %>.jpg"
                   style="width: 100px; height: auto"
                   id="imageView"
                 />

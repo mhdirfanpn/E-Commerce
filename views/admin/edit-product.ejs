@@ -6,7 +6,7 @@
         </div>
       </div>
       <form
-        action="/admin/edit-product/<%=product._id %> "
+        action="/admin/edit-product/<%=product?._id %> "
         method="POST"
         enctype="multipart/form-data"
       >
@@ -25,7 +25,7 @@
                   placeholder="Type here"
                   class="form-control"
                   id="product_name"
-                  value="<%=product.name %> "
+                  value="<%=product?.name %> "
                 />
               </div>
               <div class="mb-4">
@@ -36,7 +36,7 @@
                   placeholder="Type here"
                   class="form-control"
                   rows="8"
-                  value="<%=product.description %>"
+                  value="<%=product?.description %>"
                   />
                 </textarea>
               </div>
@@ -51,7 +51,7 @@
                         placeholder="₹"
                         type="number"
                         class="form-control"
-                        value="<%=product.price %>"
+                        value="<%=product?.price %>"
                       />
                     </div>
                   </div>
@@ -68,7 +68,7 @@
                         placeholder="Stock"
                         type="number"
                         class="form-control"
-                        value="<%=product.stock %>"
+                        value="<%=product?.stock %>"
                       />
                     </div>
                   </div>
@@ -136,10 +136,10 @@
               <div class="row gx-2">
                 <div class="mb-4">
                   <label class="form-label">Categories</label>
-                  <select class="form-select" name="category" value="<%=product.category%> ">
+                  <select class="form-select" name="category" value="<%=product?.category%> ">
           
-                    <% categories.forEach(element=>{ %>
-                    <option><%= element.name %></option>
+                    <% categories?.forEach(element=>{ %>
+                    <option><%= element?.name %></option>
                      <% }) %>
                   </select>
                 </div>

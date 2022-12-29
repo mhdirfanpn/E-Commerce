@@ -18,7 +18,7 @@
           <div class="mb-sm-15">
             <br />
             <div class="address-list mb-3">
-              <% users.userAddress.forEach(users=>{ %>
+              <% users?.userAddress?.forEach(users=>{ %>
 
               <div class="form-check">
                 <input
@@ -26,12 +26,12 @@
                   type="radio"
                   name="address"
                   id="exampleRadios1"
-                  value=" <%=users.name %> ,<%=users.addressLine %> ,<%=users.state %> ,<%=users.zipCode %> "
+                  value=" <%=users?.name %> ,<%=users?.addressLine %> ,<%=users?.state %> ,<%=users?.zipCode %> "
                   checked
                 />
                 <label class="form-check-label" for="exampleRadios1">
-                  <%=users.name %> ,<%=users.addressLine %> ,<%=users.state %>
-                  ,<%=users.zipCode %>
+                  <%=users?.name %> ,<%=users?.addressLine %> ,<%=users?.state %>
+                  ,<%=users?.zipCode %>
                 </label>
               </div>
               <% }) %>
@@ -81,13 +81,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <% product.forEach(element=>{ %>   
+                  <% product?.forEach(element=>{ %>   
                     <tr>
-                        <td class="image product-thumbnail"><img src="/productImages/<%=element.Product._id %>0.jpg" alt="#"></td>
+                        <td class="image product-thumbnail"><img src="/productImages/<%=element?.Product?._id %>0.jpg" alt="#"></td>
                         <td>
-                            <h5 style="color: #088178;"><a href=""></a><%=element.Product.name %></h5> <span class="product-qty">x  <%=element.quantity %></span>
+                            <h5 style="color: #088178;"><a href=""></a><%=element?.Product?.name %></h5> <span class="product-qty">x  <%=element?.quantity %></span>
                         </td>
-                        <td>₹<%=element.Product.price %></td>
+                        <td>₹<%=element?.Product?.price %></td>
                     </tr>
                     <% }) %> 
             
@@ -124,7 +124,7 @@
                     type="radio" id="wallet" value="wallet" checked="">
                   <label class="form-check-label" for="wallet" name="paymentMethod"
                     aria-controls="wallet">Wallet Payment</label>
-                    <input type="text" id="userWallet" value="<%=users.wallet%>" hidden>
+                    <input type="text" id="userWallet" value="<%=users?.wallet%>" hidden>
                 </div>
                 <div class="walletErr"><p class="walletErr" id="walletErr" style="color: red;"></p></div>
              

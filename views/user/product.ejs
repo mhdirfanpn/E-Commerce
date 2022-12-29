@@ -8,32 +8,32 @@
               <div
                 class="detail-gallery"
                 id="img-container"
-                value="<%=productDetails.stock %> "
+                value="<%=productDetails?.stock %> "
               >
                 <span class="zoom-icon"><i class="fi-rs-search"></i></span>
                 <!-- MAIN SLIDES -->
                 <div class="product-image-slider">
                   <figure class="border-radius-10">
                     <img
-                      src="/productImages/<%=productDetails._id %>0.jpg"
+                      src="/productImages/<%=productDetails?._id %>0.jpg"
                       alt="product image"
                     />
                   </figure>
                   <figure class="border-radius-10">
                     <img
-                      src="/productImages/<%=productDetails._id %>1.jpg"
+                      src="/productImages/<%=productDetails?._id %>1.jpg"
                       alt=""
                     />
                   </figure>
                   <figure class="border-radius-10">
                     <img
-                      src="/productImages/<%=productDetails._id %>2.jpg"
+                      src="/productImages/<%=productDetails?._id %>2.jpg"
                       alt=""
                     />
                   </figure>
                   <figure class="border-radius-10">
                     <img
-                      src="/productImages/<%=productDetails._id %>3.jpg"
+                      src="/productImages/<%=productDetails?._id %>3.jpg"
                       alt=""
                     />
                   </figure>
@@ -42,25 +42,25 @@
                 <div class="slider-nav-thumbnails pl-15 pr-15">
                   <div>
                     <img
-                      src="/productImages/<%=productDetails._id %>0.jpg"
+                      src="/productImages/<%=productDetails?._id %>0.jpg"
                       alt="product image"
                     />
                   </div>
                   <div>
                     <img
-                      src="/productImages/<%=productDetails._id %>1.jpg"
+                      src="/productImages/<%=productDetails?._id %>1.jpg"
                       alt=""
                     />
                   </div>
                   <div>
                     <img
-                      src="/productImages/<%=productDetails._id %>2.jpg"
+                      src="/productImages/<%=productDetails?._id %>2.jpg"
                       alt=""
                     />
                   </div>
                   <div>
                     <img
-                      src="/productImages/<%=productDetails._id %>3.jpg"
+                      src="/productImages/<%=productDetails?._id %>3.jpg"
                       alt=""
                     />
                   </div>
@@ -70,7 +70,7 @@
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="detail-info">
-                <h2 class="title-detail"><%=productDetails.name %></h2>
+                <h2 class="title-detail"><%=productDetails?.name %></h2>
                 <div class="product-detail-rating">
                   <div class="pro-details-brand">
                     <span>
@@ -84,13 +84,13 @@
                 </div>
                 <div class="clearfix product-price-cover">
                   <div class="product-price primary-color float-left">
-                    <% if(productDetails.categoryDiscount) { %> 
-                      <p><s>₹<%=productDetails.Oprice %></s></p>
+                    <% if(productDetails?.categoryDiscount) { %> 
+                      <p><s>₹<%=productDetails?.Oprice %></s></p>
                       <% } %> 
                       <div>
                         <ins
                       ><span class="text-brand"
-                        >₹<%=productDetails.price %></span
+                        >₹<%=productDetails?.price %></span
                       ></ins
                     >
                       </div>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="bt-1 border-color-1 mt-15 mb-15"></div>
                 <div class="short-desc mb-30">
-                  <p><%=productDetails.description %></p>
+                  <p><%=productDetails?.description %></p>
                 </div>
                 <div class="product_sort_info font-xs mb-30">
                   <ul>
@@ -125,7 +125,7 @@
 <% if (max!=0) { %>
     <button
     id="addToCarts" class="btn btn-primary mt-5"
-    onclick="addToCart('<%=productDetails._id %>')"
+    onclick="addToCart('<%=productDetails?._id %>')"
   >
     Add to cart
   </button>

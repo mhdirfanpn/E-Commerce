@@ -49,16 +49,16 @@
                     </thead>
                         <% order.forEach(element=>{ %>
                         <tr>
-                            <td><%=element._id%></td>
-                            <td><%=element. deliveryDetails[0].address%></td>
+                            <td><%=element?._id%></td>
+                            <td><%=element?. deliveryDetails[0]?.address%></td>
                           
                             <!-- <td><b></b></td> -->
                             <!-- <td><template class="__cf_email__" data-cfemail="aec3cfdcd8c7c0eecbd6cfc3dec2cb80cdc1c3">[email&#160;protected]</template></td> -->
-                            <td>₹ <%=element.totalAmount %></td>
-                            <!-- <td><span class="badge rounded-pill alert-warning"><%=element.status %></span></td> -->
-                            <td><%=element.date.toDateString().slice(3)%></td>
+                            <td>₹ <%=element?.totalAmount %></td>
+                            <!-- <td><span class="badge rounded-pill alert-warning"><%=element?.status %></span></td> -->
+                            <td><%=element?.date.toDateString().slice(3)%></td>
                             <td class="text-end">
-                                <a href="/admin/order-details/<%=element._id%>" class="btn btn-md rounded font-sm">Detail</a>
+                                <a href="/admin/order-details/<%=element?._id%>" class="btn btn-md rounded font-sm">Detail</a>
                                 <!-- <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                     <div class="dropdown-menu">

@@ -15,7 +15,7 @@
       <div class="row order-wrap mx-auto">
         <div class="text-end mb-60">
           <a href="/profile/orders" class="btn btn-outline btn-lg btn-brand-outline font-weight-bold text-brand bg-white text-hover-white border-radius-5 btn-shadow-brand hover-up">Back to all orders</a>
-          <a href="#" onclick="invoice('<%=products.length %>','<%=orders.deliveryDetails[0].address %>','<%=orders._id %>')" class="btn ms-2">Download invoice</a>
+          <a href="#" onclick="invoice('<%=Products?.length %>','<%=orders?.deliveryDetails[0]?.address %>','<%=orders?._id %>')" class="btn ms-2">Download invoice</a>
         </div>
 
       </div>
@@ -30,7 +30,7 @@
                   <!-- TODO exeption if no category is found -->
 
                   <td>Address: </td>
-                  <td><b><%=orders.deliveryDetails[0].address %>  </b></td>
+                  <td><b><%=orders?.deliveryDetails[0]?.address %>  </b></td>
                 </tr>
                
 
@@ -72,46 +72,46 @@
 
 
                 <% let i=0 %> 
-                <% products.forEach(element=>{ %>
+                <% Products?.forEach(element=>{ %>
                 <tr class="63688c9f9664c015d6575bf0-tr">
                   <td class="image product-thumbnail">
-                        <img src="/productImages/<%=element.Products._id %>0.jpg"  alt="#">
+                        <img src="/productImages/<%=element?.Products?._id %>0.jpg"  alt="#">
                     </a>
                   </td>
                 
 
                   <td class="product-name"><a href="#"
-                    id="pName<%=i %>" ><%=element.Products.name %></a></td>
+                    id="pName<%=i %>" ><%=element?.Products?.name %></a></td>
 
                  *
 
                   <td class="product-price-cart"><span
                     class="amount"
-                    id="pPrice<%=i %>"> <%=element.Products.price %></span></td>
+                    id="pPrice<%=i %>"> <%=element?.Products?.price %></span></td>
 
                 
 
                   <td class="product-quantity"><a href="#"
-                    id="pQ<%=i %>"><%=element.quantity %></a></td>
+                    id="pQ<%=i %>"><%=element?.quantity %></a></td>
 
 
-                  <td class="price" data-title="Price"><span>₹ <%=element.Products.price*element.quantity %></span></td>
-                    <td><%=element.status %>   
+                  <td class="price" data-title="Price"><span>₹ <%=element?.Products?.price*element?.quantity %></span></td>
+                    <td><%=element?.status %>   
                   <td class="button-td">
-                    <% if(element.status=="Delivered" && element.status!="return"){ %> 
+                    <% if(element?.status=="Delivered" && element?.status!="return"){ %> 
                       <!-- <h5><b style="color:red ;">Return</b></h5> -->
-                      <a   onclick="ret(' <%= element._id %>','<%= element.Products._id%>','<%= element.quantity%>')" style="color: red;">Return</a>
+                      <a   onclick="ret(' <%= element?._id %>','<%= element?.Products?._id%>','<%= element?.quantity%>')" style="color: red;">Return</a>
                       <% } %>
-                      <% if(element.status=="return"){ %> 
+                      <% if(element?.status=="return"){ %> 
                         <!-- <h5><b style="color:red ;">Return</b></h5> -->
                         <a  style="color: red;">waiting for refund</a>
                         <% } %>
 
-                    <% if(element.status!="Cancelled" && element.status!="Delivered" && element.status!="return" && element.status!="refunded"){ %> 
-                    <a   onclick="del(' <%= element._id %>','<%= element.Products._id%>','<%= element.quantity%>')" class="btn btn-sm btn-secondary"> <i class="fi-rs-shopping-bag mr-5"></i>Cancel order</a>
+                    <% if(element?.status!="Cancelled" && element?.status!="Delivered" && element?.status!="return" && element?.status!="refunded"){ %> 
+                    <a   onclick="del(' <%= element?._id %>','<%= element?.Products?._id%>','<%= element?.quantity%>')" class="btn btn-sm btn-secondary"> <i class="fi-rs-shopping-bag mr-5"></i>Cancel order</a>
                     <% } %> 
-                    <% if(orders.paymentMethod!="Cash on Delivery" && element.status=="Cancelled" && element.status!="return"){ %> 
-                      <a   onclick="ret(' <%= element._id %>','<%= element.Products._id%>','<%= element.quantity%>')" style="color: red;">Return</a
+                    <% if(orders?.paymentMethod!="Cash on Delivery" && element?.status=="Cancelled" && element?.status!="return"){ %> 
+                      <a   onclick="ret(' <%= element?._id %>','<%= element?.Products?._id%>','<%= element?.quantity%>')" style="color: red;">Return</a
                       <% } %> 
 
                   

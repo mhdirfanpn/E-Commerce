@@ -26,17 +26,17 @@
             </tr>
           </thead>
           <tbody>
-            <% category.forEach(category=>{ %>
+            <% category?.forEach(category=>{ %>
             <tr>
-              <% if(category.offer) {%> 
+              <% if(category?.offer) {%> 
 
-              <td><%=category.name %> </td>
+              <td><%=category?.name %> </td>
         
-              <td><%=category.offer %> %</td>
+              <td><%=category?.offer %> %</td>
         
-              <td><%=category.ExpiryDate %> </td>
+              <td><%=category?.ExpiryDate %> </td>
               <!-- <td>
-                   <a href="/admin/delete-offer/<%=category._id %> " class="btn btn-danger" onclick="return confirm('ARE YOU SURE TO REMOVe <%=category.name %> OFFER')" >REMOVE</a>
+                   <a href="/admin/delete-offer/<%=category?._id %> " class="btn btn-danger" onclick="return confirm('ARE YOU SURE TO REMOVe <%=category?.name %> OFFER')" >REMOVE</a>
               </td> -->
   
             </tr>
@@ -85,8 +85,8 @@
                             <select class="form-select" name="category">
                               <option>Categories</option>
             
-                              <% category.forEach(category=>{ %>
-                              <option><%= category.name %>
+                              <% category?.forEach(category=>{ %>
+                              <option><%= category?.name %>
                                 </option>
                               > <% }) %>
                             </select>

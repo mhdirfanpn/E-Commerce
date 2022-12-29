@@ -23,8 +23,8 @@
                                     <select class="form-select" name="name">
                                       <option>Categories</option>
                     
-                                      <% category.forEach(category=>{ %>
-                                      <option><%= category.name %></option>
+                                      <% category?.forEach(category=>{ %>
+                                      <option><%= category?.name %></option>
                                       > <% }) %>
                                     </select>
                                   </div>

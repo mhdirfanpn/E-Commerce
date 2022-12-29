@@ -23,7 +23,7 @@
           </thead>
           <tbody>
             <% let i=1 %> 
-            <% userDetails.forEach(user=>{ %>
+            <% userDetails?.forEach(user=>{ %>
 
 
             <tr>
@@ -37,18 +37,18 @@
               <td width="20%">
                 <a href="#" class="itemside">
                   <div class="info pl-3">
-                    <h6 class="mb-0 title"><%=user.name %></h6>
+                    <h6 class="mb-0 title"><%=user?.name %></h6>
                   </div>
                 </a>
               </td>
               <td>
                 <div class="info">
-                  <p class="mb-0 title"><%=user.email %></p>
+                  <p class="mb-0 title"><%=user?.email %></p>
                 </div>
               </td>
 
               <td>
-                <% if (user.isBlocked) { %>
+                <% if (user?.isBlocked) { %>
                 <span class="badge rounded-pill alert-danger">Inactive</span>
                 <%} else { %>
                 <span class="badge rounded-pill alert-success">Active</span>
@@ -57,18 +57,18 @@
 
               <td>08.07.2020</td>
               <td class="text-end">
-                <% if (user.isBlocked) { %>
+                <% if (user?.isBlocked) { %>
                 <a
-                  href="/admin/unblock-user/<%=user._id %> "
+                  href="/admin/unblock-user/<%=user?._id %> "
                   class="btn btn-sm btn-brand rounded font-sm mt-15"
-                  onclick="return confirm('Are you sure you want to unblock <%=user.name %>?');"
+                  onclick="return confirm('Are you sure you want to unblock <%=user?.name %>?');"
                   >Unblock</a
                 >
                 <%} else { %>
                 <a
-                  href="/admin/block-user/<%=user._id %> "
+                  href="/admin/block-user/<%=user?._id %> "
                   class="btn btn-sm btn-brand rounded font-sm mt-15"
-                  onclick="return confirm('Are you sure you want to block <%=user.name %>?');"
+                  onclick="return confirm('Are you sure you want to block <%=user?.name %>?');"
                   >Block</a
                 >
                 <% } %>

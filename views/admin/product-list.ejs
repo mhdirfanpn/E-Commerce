@@ -73,47 +73,47 @@
                       <td width="30%">
                         <a href="#" class="itemside">
                             <div class="left">
-                                <img style="width: 50px; height: 50px;" src="/productImages/<%=product._id %>0.jpg"  alt="" />
+                                <img style="width: 50px; height: 50px;" src="/productImages/<%=product?._id %>0.jpg"  alt="" />
                             </div>
                           <div class="info pl-3 ">
                             
-                            <h6 class="mb-0 title"><%=product.name %></h6>
+                            <h6 class="mb-0 title"><%=product?.name %></h6>
                           </div>
                         </a>
                       </td>
 
                       <td>
                         <div class="info">
-                          <p class="mb-0 title"><%=product.category %></p>
+                          <p class="mb-0 title"><%=product?.category %></p>
                         </div>
                       </td>
 
 
                       <td>
                         <div class="info">
-                          <p class="mb-0 title"><%=product.description %></p>
+                          <p class="mb-0 title"><%=product?.description %></p>
                         </div>
                       </td>
   
                       
                       <td>
                         <div class="info">
-                          <p class="mb-0 title">₹ <%=product.price %></p>
+                          <p class="mb-0 title">₹ <%=product?.price %></p>
                         </div>
                       </td>
 
                       <td>
                         <div class="info">
-                          <p class="mb-0 title"><%=product.stock %></p>
+                          <p class="mb-0 title"><%=product?.stock %></p>
                         </div>
                       </td>
                      
-                      <td><%=product.date %></td>
+                      <td><%=product?.date %></td>
                       <td class="text-end">
-                        <a href="/admin/edit-product/<%=product._id %>" class="btn btn-sm btn-brand rounded font-sm mt-15"
+                        <a href="/admin/edit-product/<%=product?._id %>" class="btn btn-sm btn-brand rounded font-sm mt-15"
                           >Edit</a
                         >
-                        <a href="/admin/delete-product/<%=product._id %> " class="btn btn-sm btn-brand rounded font-sm mt-15" onclick="return confirm('Are you sure you want to delete <%=product.name %>?');"
+                        <a href="/admin/delete-product/<%=product?._id %> " class="btn btn-sm btn-brand rounded font-sm mt-15" onclick="return confirm('Are you sure you want to delete <%=product?.name %>?');"
                           >Delete</a
                         >
                       </td>

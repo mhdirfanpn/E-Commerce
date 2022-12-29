@@ -56,17 +56,17 @@
                     <form id="add-address-checkout" action="" method="post">
                         <div class="form-group">
                           <label for="">Name</label>
-                          <input id="name" required="" value="<%=user.name %>" readonly type="text" name="name" placeholder="Name *" onchange="">
+                          <input id="name" required="" value="<%=user?.name %>" readonly type="text" name="name" placeholder="Name *" onchange="">
                           <span id="name" class="mt-2 text-danger" style="font-size: 13px"></span>
                         </div>
                        <label for="">Email</label>
                         <div class="form-group">
-                          <input required="" id="Email" type="text" value="<%=user.email %>" readonly name="email" placeholder="Email address *" onchange="">
+                          <input required="" id="Email" type="text" value="<%=user?.email %>" readonly name="email" placeholder="Email address *" onchange="">
                           <span id="email" class="mt-2 text-danger" style="font-size: 13px"></span>
                         </div>
                         <label for="">Phone</label>
                         <div class="form-group">
-                          <input required="" id="phonenumber" value="<%=user.phoneNumber %>" readonly type="text" name="phone" placeholder="Phone *" onchange="">
+                          <input required="" id="phonenumber" value="<%=user?.phoneNumber %>" readonly type="text" name="phone" placeholder="Phone *" onchange="">
                           <span id="phonenumbers" class="mt-2 text-danger" style="font-size: 13px"></span>
                         </div>
                       </form>

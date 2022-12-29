@@ -19,34 +19,34 @@
                       <div class="panel-body">
                         <form id="submit-form" action="/edit-address" method="post">
                           <div class="form-group">
-                            <input required="" type="text" name="name" placeholder="Full name *" onchange="" value="<%=response[0].name %>" onkeyup=" validateName()" id="contact-name" onclick="validateName()">
+                            <input required="" type="text" name="name" placeholder="Full name *" onchange="" value="<%=response[0]?.name %>" onkeyup=" validateName()" id="contact-name" onclick="validateName()">
                             <span id="name-error" style="color: red;"></span>
                           </div>
                           <div class="form-group">
-                            <input required="" type="text" name="addressLine" placeholder="Address *" value="<%=response[0].addressLine %>" id="addres" onkeyup="validateAddress()" onclick="validateAddress()" >
+                            <input required="" type="text" name="addressLine" placeholder="Address *" value="<%=response[0]?.addressLine %>" id="addres" onkeyup="validateAddress()" onclick="validateAddress()" >
                             <span id="address-error" style="color: red;"></span>
                           </div>
                           <div class="form-group">
-                            <input required="" type="text" name="city" placeholder="City / Town *" value="<%=response[0].city %>" id="city" onkeyup="validateCity()" onclick="validateCity()">
+                            <input required="" type="text" name="city" placeholder="City / Town *" value="<%=response[0]?.city %>" id="city" onkeyup="validateCity()" onclick="validateCity()">
                             <span id="city-error" style="color: red;"></span>
                           </div>
                           <div class="form-group">
-                            <input required="" type="text" name="state" placeholder="State / County *" value="<%=response[0].state %>"  id="state" onkeyup="validateState()" onclick="validateState()">
+                            <input required="" type="text" name="state" placeholder="State / County *" value="<%=response[0]?.state %>"  id="state" onkeyup="validateState()" onclick="validateState()">
                             <span id="state-error" style="color: red;"></span>
                           </div>
                           <div class="form-group">
-                            <input required="" id="pin" type="text" name="zipCode" placeholder="Postcode / ZIP *" onchange="" value="<%=response[0].zipCode %>"  onkeyup=" validatepin()" onclick="validatepin()">
+                            <input required="" id="pin" type="text" name="zipCode" placeholder="Postcode / ZIP *" onchange="" value="<%=response[0]?.zipCode %>"  onkeyup=" validatepin()" onclick="validatepin()">
                             <span id="pin-error" class="mt-2 text-danger" style="color: red;"></span>
                           </div>
                           <div class="form-group">
-                            <input required="" id="contact-phonenumber" type="text" name="phone" placeholder="Phone *" onchange="" value="<%=response[0].phone %>"  onkeyup=" validatePhoneNumber()" onclick=" validatePhoneNumber()">
+                            <input required="" id="contact-phonenumber" type="text" name="phone" placeholder="Phone *" onchange="" value="<%=response[0]?.phone %>"  onkeyup=" validatePhoneNumber()" onclick=" validatePhoneNumber()">
                             <span id="number-error" style="color: red;"></span>
                           </div>
                           <div class="form-group">
-                            <input required="" id="contact-email" type="text" name="email" placeholder="Email address *" onchange="" value="<%=response[0].email %>" onkeyup=" validateEmail()" onclick="validateEmail()">
+                            <input required="" id="contact-email" type="text" name="email" placeholder="Email address *" onchange="" value="<%=response[0]?.email %>" onkeyup=" validateEmail()" onclick="validateEmail()">
                             <span id="email-error" style="color: red;"></span>
                           </div>
-                          <input type="text" value="<%=response[0]._id %> " name="addressId" hidden />
+                          <input type="text" value="<%=response[0]?._id %> " name="addressId" hidden />
                           <div class="form-group">
                             <button type="submit"  onclick="validateForm()" class="btn btn-outline btn-lg btn-brand-outline font-weight-bold text-brand bg-white text-hover-white border-radius-5 btn-shadow-brand hover-up" id="contact-submit" name="">Edit address</button>
                             <div id="submit-error" style="color: red;"></div>

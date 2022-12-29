@@ -61,34 +61,34 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <% let i=1 %> <% orders.forEach(element=>{ %>
+                          <% let i=1 %> <% orders?.forEach(element=>{ %>
                           <tr>
                             <!-- <td>
                               <div class="left">
                                 <p class="fs-5"><%=i %></p>
                               </div>
                             </td> -->
-                            <td><a href="#"></a><%=element._id%></td>
-                            <td><%=element.date.toDateString().slice(3)%></td>
-                            <td><%=element.paymentMethod %></td>
+                            <td><a href="#"></a><%=element?._id%></td>
+                            <td><%=element?.date.toDateString().slice(3)%></td>
+                            <td><%=element?.paymentMethod %></td>
                             <td>₹
-                              <%=element.totalAmount %>
+                              <%=element?.totalAmount %>
                             </td>
                             <td>
                               <span class="badge rounded-pill alert-success"
-                                ><%=element.status%></span
+                                ><%=element?.status%></span
                               >
                             </td>
                             <td>
                               <a
-                                href="/order-products/<%=element._id%>"
+                                href="/order-products/<%=element?._id%>"
                                 class="btn-small d-block"
                                 >View</a
                               >
                             </td>
                             <!-- <td class="text-center">
                               <a
-                                href="/delete-order/<%=element._id %> "
+                                href="/delete-order/<%=element?._id %> "
                                 class="text-muted"
                                 ><i class="fi-rs-trash"></i
                               ></a>

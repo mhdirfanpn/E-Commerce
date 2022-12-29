@@ -272,13 +272,13 @@
                          </tr>
                      </thead>
                      <tbody>
-                        <% result.forEach(result=>{ %>
+                        <% result?.forEach(result=>{ %>
 
                          <tr>
  
                              <!-- <td scope="row">{{counter @index}}</td> -->
-                             <td id="cattd"><%=result._id %> </td>
-                             <td id="totaltd"><%=result.totalAmount %> </td>
+                             <td id="cattd"><%=result?._id %> </td>
+                             <td id="totaltd"><%=result?.totalAmount %> </td>
  
                          </tr>
                          <% }) %> 
