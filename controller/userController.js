@@ -275,6 +275,7 @@ const getCartDetails = async (req, res) => {
       wishlistCount = await userHelpers.wishlistCount(req.session.user._id);
     }
     let product = await userHelpers.getCartProducts(req.session.user);
+    console.log(product);
     let date = await db.Visitor.findOne();
     let total = await userHelpers.getTotalAmount(req.session.user._id);
     if (total) {
