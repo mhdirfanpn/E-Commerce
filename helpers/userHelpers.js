@@ -653,8 +653,8 @@ const generatePayPal = (orderId, totalPrice) => {
         payment_method: "paypal",
       },
       redirect_urls: {
-        return_url: "http://localhost:3000/order-success",
-        cancel_url: "http://localhost:3000/cancel",
+        return_url: "http://evara.ga/order-success",
+        cancel_url: "http://evara.ga//cancel-payment",
       },
       transactions: [
         {
