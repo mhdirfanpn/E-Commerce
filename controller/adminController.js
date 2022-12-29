@@ -231,7 +231,7 @@ const addCategory = (req, res) => {
   try {
     adminHelpers.addCategory(req.body).then((response) => {
       let image = req.files?.categoryImage;
-      let id = response._id;
+      let id = response?._id;
       image.mv("./public/category-images/" + id + ".jpg", (err, done) => {
         if (!err) {
           res.redirect("/admin/product-category");

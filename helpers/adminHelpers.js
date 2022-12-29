@@ -182,16 +182,19 @@ const categories = (req, res) => {
 const addCategory = (categoryDetails) => {
   return new Promise(async (resolve, reject) => {
     let category = await db.category.findOne({ name: categoryDetails.name });
-    if (!category) {
+    if (category) {
+      console.log('category exist');
+      resolve(category)
+    }else{
       db.category(categoryDetails)
-        .save()
-        .then((response) => {
-          resolve(response);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    }
+      .save()
+      .then((response) => {
+        resolve(response);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+    } 
   });
 };
 
