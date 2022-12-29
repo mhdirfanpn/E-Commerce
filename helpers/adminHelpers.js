@@ -784,7 +784,7 @@ const productDetails = () => {
 
 const dailyRevenue = () => {
   return new Promise(async (resolve, reject) => {
-    let sales = await db.order
+    await db.order
       .aggregate([
         {
           $unwind: {
