@@ -548,7 +548,7 @@ const profileOrders = async (req, res) => {
       user: req.session.user,
       currentPage: pageNum,
       totalDocuments: orders.docCount,
-      pages: Math.ceil(orders.docCount / perPage),
+      pages: Math.round(orders.docCount / perPage),
     });
   } catch (error) {
     console.log(error);
