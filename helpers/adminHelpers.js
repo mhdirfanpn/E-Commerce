@@ -38,7 +38,6 @@ const productList = (pageNum, docCount, perPage) => {
 
     await db.product
       .find()
-      .sort({ $natural: -1 })
       .countDocuments()
       .then((documents) => {
         docCount = documents;
