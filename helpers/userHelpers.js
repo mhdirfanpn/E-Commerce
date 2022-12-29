@@ -474,9 +474,7 @@ const getTotalAmount = (userId) => {
             total: {
               $sum: {
                 $multiply: [
-                  { $toInt: "$quantity" },
-                  { $toInt: "$Product.price" },
-                ],
+                   "$quantity","$Product.price" ],
               },
             },
           },
