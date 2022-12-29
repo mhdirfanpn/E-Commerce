@@ -22,7 +22,7 @@ router.get("/logout", adminController.logout);
 
 //user
 
-router.get("/users-list", verifiLogin, adminController.userList);
+router.get("/users-list", adminController.userList);
 
 router.get("/block-user/:id", verifiLogin, adminController.blockUser);
 
