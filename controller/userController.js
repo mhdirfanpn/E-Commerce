@@ -207,7 +207,7 @@ const signup = (req, res) => {
 const userLogin = (req, res) => {
   try {
     userHelpers.userSignup(req.body).then((user) => {
-      let blocked = user.isBlocked;
+      let blocked = user?.isBlocked;
       if (blocked) {
         req.session.loginErr = "You are blocked";
         res.redirect("/login");
