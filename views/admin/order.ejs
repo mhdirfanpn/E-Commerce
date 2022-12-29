@@ -56,7 +56,9 @@
                             <!-- <td><template class="__cf_email__" data-cfemail="aec3cfdcd8c7c0eecbd6cfc3dec2cb80cdc1c3">[email&#160;protected]</template></td> -->
                             <td>₹ <%=element?.totalAmount %></td>
                             <!-- <td><span class="badge rounded-pill alert-warning"><%=element?.status %></span></td> -->
-                            <td><%=element?.date.toDateString().slice(3)%></td>
+                            <td><%=element?.
+                                orderDate
+                                %></td>
                             <td class="text-end">
                                 <a href="/admin/order-details/<%=element?._id%>" class="btn btn-md rounded font-sm">Detail</a>
                                 <!-- <div class="dropdown">
