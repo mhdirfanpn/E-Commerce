@@ -16,29 +16,18 @@ const adminLogin = (adminData) => {
   });
 };
 
-const userList = (pageNum, docCount, perPage) => {
+const userList = () => {
   return new Promise(async (resolve, reject) => {
-    let docCount;
     await db.users
       .find()
-      .sort({ $natural: -1 })
-      .countDocuments()
-      .then((documents) => {
-        docCount = documents;
-        return db.users
-          .find()
-          .sort({ $natural: -1 })
-          .skip((pageNum - 1) * perPage)
-          .limit(perPage);
+  
       })
       .then((response) => {
-        orders.docCount = docCount;
         resolve(response);
       })
       .catch((err) => {
         reject(err);
       });
-  });
 };
 
 const productList = (pageNum, docCount, perPage) => {

@@ -134,13 +134,7 @@
     <div class="pagination-area mt-30 mb-50">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-start">
-              <% for(let i=1;i<=pages;i++) { %> 
-                <% if(i==currentPage) {%> 
-                  <li class="page-item active"><a class="page-link" href="/admin/products-list?page=<%=i %>"><%=i %> </a></li>
-                  <% } else { %> 
-                    <li class="page-item"><a class="page-link" href="/admin/products-list?page=<%=i %>"><%=i %> </a></li>
-                    <% } %>   
-                <% } %> 
+         
 
             </ul>
         </nav>
