@@ -113,21 +113,10 @@ const userList = (req, res) => {
 };
 
 const productList = async (req, res) => {
-  
-    let docCount;
-    const perPage = 10;
-    const pageNum = req.query.page;
-    let productDetails = await adminHelpers.productList(
-      pageNum,
-      docCount,
-      perPage
-    );
+    let productDetails = await adminHelpers.productList();
     res.render("admin/product-list", {
       layout: "admin-layout",
       productDetails,
-      currentPage: pageNum,
-      totalDocuments: productDetails.docCount,
-      pages: Math.ceil(productDetails.docCount / perPage),
     });
 };
 

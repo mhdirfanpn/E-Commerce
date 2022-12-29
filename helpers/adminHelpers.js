@@ -33,31 +33,21 @@ const userList = () => {
     })
 };
 
-const productList = (pageNum,perPage) => {
+const productList = () => {
   return new Promise(async (resolve, reject) => {
-    let docCount;
-
     await db.product
       .find()
-      .sort({ $natural: -1 })
-      .countDocuments()
-      .then((documents) => {
-        docCount = documents;
-        return db.product
-          .find()
-          .sort({ $natural: -1 })
-          .skip((pageNum - 1) * perPage)
-          .limit(perPage);
-      })
-
+      .sort({ $natural: -1 })  
       .then((productDetails) => {
-        productDetails.docCount = docCount;
         resolve(productDetails);
+        console.log(productDetails);
       })
       .catch((err) => {
         reject(err);
       });
-  });
+      })
+
+
 };
 
 const productCategory = (id) => {
