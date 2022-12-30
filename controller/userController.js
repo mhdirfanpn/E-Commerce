@@ -11,7 +11,7 @@ var client = require('twilio')(YOUR_ACCOUNT_SID, YOUR_AUTH_TOKEN)
 
 
 const { ObjectID } = require("bson");
-
+//landingpage
 const landingPage = async (req, res) => {
   try {
     userHelpers.visitors();
