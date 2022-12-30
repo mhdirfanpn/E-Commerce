@@ -21,7 +21,7 @@ const loginPage = async (req, res) => {
         orders,
         category,
         products,
-        dayr,
+        dayr
       });
     } else {
       res.render("admin/admin-login", { layout: "admin-layout", nav: true });
