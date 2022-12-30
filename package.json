@@ -12,6 +12,7 @@
     "cookie-parser": "~1.4.4",
     "currency-converter-lt": "^2.0.0-beta.0",
     "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
     "easyinvoice": "^2.3.3",
     "ejs": "^3.1.8",
     "express": "~4.16.1",
