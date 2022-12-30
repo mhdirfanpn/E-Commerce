@@ -41,10 +41,9 @@
           /></a>
         </div>
         <div class="header-right">
-          <div class="search-style-2">
-            <!-- <form action="#">
-              <input type="text" placeholder="Search for items..." />
-            </form> -->
+            <div id="searchWrap" class="search-style-2">
+              <input id="search_form" type="text" placeholder="Search for items..." onkeyup="sendData(this)">
+              <div id="searchResults"></div>     
           </div>
           <div class="header-action-right">
             <div class="header-action-2">
@@ -87,3 +86,32 @@
     </div>
   </div>
 </header>
+
+<script>
+  function sendData(data) {
+    const searchResults = document.getElementById('searchResults')
+    fetch('/search', {
+        method: 'post',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({ payload: data.value })
+    })
+    .then(res => res.json()).then(data => {
+        let result = data.searchQuery
+        searchResults.innerHTML = '';
+        if (data.resultfound) {
+            if (result.length < 1) {
+                searchResults.style.display = 'block';
+                searchResults.innerHTML = '<p>Sorry, nothing found!</p>'
+                return
+            }
+            searchResults.style.display = 'block';
+            console.log(result);
+            result.forEach((item, index) => {
+                searchResults.innerHTML += `<p><a href="/product/${item._id}">${item.name}</a></p>`
+            });
+        } else {
+            searchResults.style.display = 'none';
+        }
+    })
+}
+</script>

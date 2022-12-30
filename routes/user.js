@@ -138,5 +138,9 @@ router.post("/edit-address", verifyLogin, userController.updateAddress);
 
 router.post("/apply-coupan",verifyLogin,userController.couponApply);
 
+//search
+
+router.post('/search', userController.searchResults);
+
 
 module.exports = router;

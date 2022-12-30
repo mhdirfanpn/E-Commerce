@@ -747,6 +747,16 @@ const cancelPayment = async (req, res) => {
   }
 };
 
+const searchResults = async (req, res) => {
+  let searchQuery = req.body.payload.trim();
+  if (searchQuery.length > 0) {
+    result = await userHelpers.searchResults(searchQuery);
+    res.send({ searchQuery: result, resultfound: true });
+  } else {
+    res.send({ searchQuery: "", resultfound: false });
+  }
+};
+
 module.exports = {
   landingPage,
   signupPage,
@@ -786,4 +796,5 @@ module.exports = {
   getWishlist,
   removeProductWishlist,
   cancelPayment,
+  searchResults
 };

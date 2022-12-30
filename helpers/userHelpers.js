@@ -1191,6 +1191,17 @@ const catCount = () => {
   });
 };
 
+const searchResults = async (searchQuery) => {
+  try {
+    const result = await db.product
+      .find({ name: new RegExp("^" + searchQuery + ".*", "i") })
+      .limit(5);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   userSignup,
   userLogin,
@@ -1238,4 +1249,5 @@ module.exports = {
   wishlistCount,
   walletPayment,
   changeStatus,
+  searchResults,
 };
