@@ -147,6 +147,22 @@
           let wish = $("#wishlistCount").html();
           wish = parseInt(wish) + 1;
           $("#wishlistCount").html(wish);
+          const Toast = Swal.mixin({
+  toast: true,
+  position: 'center',
+  showConfirmButton: false,
+  timer: 1000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'added to wishlist'
+})
         }
       },
     });
