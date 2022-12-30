@@ -1,17 +1,10 @@
 const userHelpers = require("../helpers/userHelpers");
 var db = require("../Model/connection");
 const bcrypt = require("bcrypt");
-
-
-require('dotenv').config()
-let YOUR_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID
-let YOUR_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN
-let YOUR_SERVICE_ID = process.env.TWILIO_SERVICE_ID
-var client = require('twilio')(YOUR_ACCOUNT_SID, YOUR_AUTH_TOKEN)
-
-
+const otp = require("../helpers/otpHelpers");
+const client = require("twilio")(otp.accoundSid, otp.authToken);
 const { ObjectID } = require("bson");
-//landingpage
+
 const landingPage = async (req, res) => {
   try {
     userHelpers.visitors();
@@ -92,7 +85,7 @@ const getOtpage = (req, res) => {
 const getOtplogin = (req, res) => {
   try {
     client.verify
-      .services(YOUR_SERVICE_ID )
+      .services(otp.serviceId)
       .verifications.create({
         to: `+${req.query.phoneNumber}`,
         channel: req.query.channel,
@@ -109,7 +102,7 @@ const getOtplogin = (req, res) => {
 const getOtpverify = (req, res) => {
   try {
     client.verify
-      .services(YOUR_SERVICE_ID )
+      .services(otp.serviceId)
       .verificationChecks.create({
         to: `+${req.query.phoneNumber}`,
         code: req.query.code,
