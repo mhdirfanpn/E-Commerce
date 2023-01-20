@@ -3,7 +3,7 @@ const { ObjectID } = require("bson");
 const { category } = require("../Model/connection");
 const { orders } = require("@paypal/checkout-server-sdk");
 
-const adminLogin = (adminData) => {
+var adminLogin = (adminData) => {
   return new Promise(async (resolve, reject) => {
     await db.admin
       .findOne({ email: adminData.email })
