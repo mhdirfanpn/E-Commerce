@@ -219,7 +219,7 @@
       method: "post",
       data: $("#checkout-form").serialize(),
       success: (response) => {
-        alert("Your order has been placed");
+        // alert("Your order has been placed");
         if (response.codSuccess) {
           location.href = "/order-success";
         }

@@ -34,7 +34,7 @@ app.use(
     cookie: { maxAge: 6000000 },
     resave: true,
     store: new mongoDbSesson({
-      uri: "mongodb://localhost:27017/Evara",
+      uri: "mongodb+srv://mhdirfanpn:NMDCK1yRXkSuK4FY@cluster0.p8wswr7.mongodb.net/evara",
       collection: "session",
     }),
     saveUninitialized: true,

@@ -4,10 +4,10 @@ const bcrypt = require("bcrypt");
 
 
 require('dotenv').config()
-let YOUR_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID
-let YOUR_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN
-let YOUR_SERVICE_ID = process.env.TWILIO_SERVICE_ID
-var client = require('twilio')(YOUR_ACCOUNT_SID, YOUR_AUTH_TOKEN)
+// let YOUR_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID
+// let YOUR_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN
+// let YOUR_SERVICE_ID = process.env.TWILIO_SERVICE_ID
+// var client = require('twilio')(YOUR_ACCOUNT_SID, YOUR_AUTH_TOKEN)
 
 
 const { ObjectID } = require("bson");
@@ -91,15 +91,15 @@ const getOtpage = (req, res) => {
 
 const getOtplogin = (req, res) => {
   try {
-    client.verify
-      .services(YOUR_SERVICE_ID )
-      .verifications.create({
-        to: `+${req.query.phoneNumber}`,
-        channel: req.query.channel,
-      })
-      .then((data) => {
-        res.status(200).send(data);
-      });
+    // client.verify
+    //   .services(YOUR_SERVICE_ID )
+    //   .verifications.create({
+    //     to: `+${req.query.phoneNumber}`,
+    //     channel: req.query.channel,
+    //   })
+    //   .then((data) => {
+    //     res.status(200).send(data);
+    //   });
   } catch (error) {
     console.log(error);
     res.render("user/error", { nav: true });
@@ -108,27 +108,27 @@ const getOtplogin = (req, res) => {
 
 const getOtpverify = (req, res) => {
   try {
-    client.verify
-      .services(YOUR_SERVICE_ID )
-      .verificationChecks.create({
-        to: `+${req.query.phoneNumber}`,
-        code: req.query.code,
-      })
-      .then(async (data) => {
-        if (data.valid) {
-          let Number = data.to.slice(3);
-          let userData = await db.users.findOne({ phoneNumber: Number });
-          console.log(userData);
-          if (userData.phoneNumber == Number && userData.isBlocked==false) {
-            req.session.user = userData;
-            res.send({ value: "success" });
-          } else {
-            res.send({ value: "failed" });
-          }
-        } else {
-          res.send({ value: "failed" });
-        }
-      });
+    // client.verify
+    //   .services(YOUR_SERVICE_ID )
+    //   .verificationChecks.create({
+    //     to: `+${req.query.phoneNumber}`,
+    //     code: req.query.code,
+    //   })
+    //   .then(async (data) => {
+    //     if (data.valid) {
+    //       let Number = data.to.slice(3);
+    //       let userData = await db.users.findOne({ phoneNumber: Number });
+    //       console.log(userData);
+    //       if (userData.phoneNumber == Number && userData.isBlocked==false) {
+    //         req.session.user = userData;
+    //         res.send({ value: "success" });
+    //       } else {
+    //         res.send({ value: "failed" });
+    //       }
+    //     } else {
+    //       res.send({ value: "failed" });
+    //     }
+    //   });
   } catch (error) {
     console.log(error);
     res.render("user/error", { nav: true });

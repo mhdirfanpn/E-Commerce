@@ -1,6 +1,8 @@
 const { MongoGridFSChunkError, ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
-const db = mongoose.createConnection("mongodb://localhost:27017/Evara");
+const db = mongoose.createConnection("mongodb+srv://mhdirfanpn:NMDCK1yRXkSuK4FY@cluster0.p8wswr7.mongodb.net/evara");
+
+// mongodb+srv://mhdirfanpn:NMDCK1yRXkSuK4FY@cluster0.p8wswr7.mongodb.net/evara
 
 db.on("error", (err) => {
   console.log(err);

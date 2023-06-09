@@ -229,7 +229,7 @@
       method: "post",
       data: $("#checkout-form").serialize(),
       success: (response) => {
-        alert("Your order has been placed");
+        // alert("Your order has been placed");
         if (response.codSuccess) {
           location.href = "/order-success";
         }if(response.razorpay) {
@@ -304,7 +304,7 @@
       method: "post",
       data: $("#add-address-checkout").serialize(),
       success: (response) => {
-        alert("Your order has been placed");
+        // alert("Your order has been placed");
         if (response) {
           location.href = "/checkout";
         }
