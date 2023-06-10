@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
     secret: "key",
-    cookie: { maxAge: 6000000 },
+    cookie: { maxAge: 600000 },
     resave: true,
     store: new mongoDbSesson({
       uri: "mongodb+srv://mhdirfanpn:NMDCK1yRXkSuK4FY@cluster0.p8wswr7.mongodb.net/evara",
