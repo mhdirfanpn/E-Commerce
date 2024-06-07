@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+require('dotenv').config()
 
 
 
@@ -34,7 +35,7 @@ app.use(
     cookie: { maxAge: 600000 },
     resave: true,
     store: new mongoDbSesson({
-      uri: "mongodb+srv://mhdirfanpn:NMDCK1yRXkSuK4FY@cluster0.p8wswr7.mongodb.net/evara",
+      uri: process.env.MONGOURL,
       collection: "session",
     }),
     saveUninitialized: true,
